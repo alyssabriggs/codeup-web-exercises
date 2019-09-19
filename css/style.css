@@ -1,9 +1,9 @@
 .fancy-header {
-    color: peru;
+    color: antiquewhite;
     text-align: center;
 }
 h1, h3 {
-    color: navajowhite;
+    color: whitesmoke;
     text-decoration: underline;
 }
 body {
@@ -14,13 +14,21 @@ body {
     font-family: 'Squada One', cursive;
     color: #fccc36;
     font-weight: lighter;
+    text-align: center;
 }
 ul, ol {
-    list-style: square;
+    list-style: square inside;
+    text-align: center;
+    padding: 0px;
+    font-size: 20px;
+
 }
 table, td, tr {
     padding: 10px;
     font-size: 16px;
+    margin-right: auto;
+    margin-left: auto;
+    font-size: 20px;
 }
 a:link {
     color: white;
