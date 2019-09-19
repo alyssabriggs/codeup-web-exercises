@@ -1,0 +1,33 @@
+.fancy-header {
+    color: peru;
+    text-align: center;
+}
+h1, h3 {
+    color: navajowhite;
+    text-decoration: underline;
+}
+body {
+    background-color: aliceblue;
+    background-image: url("../img/welcome-background.jpeg");
+    background-size: 1500px 1500px;
+    background-position: center;
+    font-family: 'Squada One', cursive;
+    color: #fccc36;
+    font-weight: lighter;
+}
+ul, ol {
+    list-style: square;
+}
+table, td, tr {
+    padding: 10px;
+    font-size: 16px;
+}
+a:link {
+    color: white;
+}
+a:hover {
+    color: gold;
+}
+a:visited {
+    color: darksalmon;
+}
