@@ -21,7 +21,6 @@ ul, ol {
     text-align: center;
     padding: 0px;
     font-size: 20px;
-
 }
 table, td, tr, th {
     padding: 15px;
@@ -29,8 +28,10 @@ table, td, tr, th {
     margin-right: auto;
     margin-left: auto;
     font-size: 20px;
-    border: 1px solid whitesmoke;
+    border: 1px solid #404348 ;
     border-spacing: 0;
+    background-color: antiquewhite;
+    color: #1d6652;
 }
 th {
     border-width: thick;
@@ -39,25 +40,34 @@ th {
     text-decoration: underline;
 }
 .plan {
-    border-left: thick solid whitesmoke;
+    border-left: thick solid #404348;
     border-right: none;
 }
 .price {
     border-right: none;
-    border-left: thick solid whitesmoke;
+    border-left: thick solid #404348;
 }
 .feat {
-    border-left:thick solid whitesmoke;
-    border-right: thick solid whitesmoke;
+    border-left:thick solid #404348;
+    border-right: thick solid #404348;
 }
 #unlim {
-    border-bottom: thick solid whitesmoke;
+    border-bottom: thick solid #404348;
 }
 #bottom2 {
-    border-bottom: thick solid whitesmoke;
+    border-bottom: thick solid #404348;
 }
 #prem {
-    border-bottom: thick solid whitesmoke;
+    border-bottom: thick solid #404348;
+}
+.explain {
+    background-color: antiquewhite;
+    color: #292c31;
+    padding: 20px;
+    display: none;
+}
+span:hover + .explain {
+    display: block;
 }
 table {
     border: none;
@@ -65,12 +75,12 @@ table {
 a:link {
     color: white;
 }
-a:hover {
-    color: gold;
-}
 a:visited {
     color: darksalmon;
 }
+a:hover {
+    color: greenyellow;
+}
 .zoom:hover {
-    transform: scale(2.5);
+    transform: scale(2);
 }
