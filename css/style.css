@@ -11,9 +11,8 @@ body {
     background-image: url("../img/welcome-background.jpeg");
     background-size: 1500px 1500px;
     background-position: center;
-    font-family: 'Squada One', cursive;
+    font-family: 'DM Serif Display', serif;
     color: #fccc36;
-    font-weight: lighter;
     text-align: center;
 }
 ul, ol {
@@ -23,12 +22,44 @@ ul, ol {
     font-size: 20px;
 
 }
-table, td, tr {
-    padding: 10px;
+table, td, tr, th {
+    padding: 15px;
     font-size: 16px;
     margin-right: auto;
     margin-left: auto;
     font-size: 20px;
+    border: 1px solid whitesmoke;
+    border-spacing: 0;
+}
+th {
+    border-width: thick;
+    border-inline: white;
+    font-size: 30px;
+    text-decoration: underline;
+}
+.plan {
+    border-left: thick solid whitesmoke;
+    border-right: none;
+}
+.price {
+    border-right: none;
+    border-left: thick solid whitesmoke;
+}
+.feat {
+    border-left:thick solid whitesmoke;
+    border-right: thick solid whitesmoke;
+}
+#unlim {
+    border-bottom: thick solid whitesmoke;
+}
+#bottom2 {
+    border-bottom: thick solid whitesmoke;
+}
+#prem {
+    border-bottom: thick solid whitesmoke;
+}
+table {
+    border: none;
 }
 a:link {
     color: white;
