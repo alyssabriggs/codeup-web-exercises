@@ -8,8 +8,9 @@ h1, h3 {
 }
 body {
     background-color: aliceblue;
-    background-image: url("../img/welcome-background.jpeg");
-    background-size: 1500px 1700px;
+    background-image: url("../img/denim.png");
+    background-repeat: repeat;
+    background-size: 100px 100px;
     background-position: center;
     font-family: 'DM Serif Display', serif;
     color: #fccc36;
@@ -69,4 +70,7 @@ a:hover {
 }
 a:visited {
     color: darksalmon;
+}
+.zoom:hover {
+    transform: scale(2.5);
 }
