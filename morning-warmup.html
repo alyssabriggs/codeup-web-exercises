@@ -11,8 +11,16 @@
     function sum(a,b) {
         return (a + b);
     }
+    console.log(sum(2,2));
 
-    console.log(sum(2,2))
+    function areaTriangle(a,b,c) {
+     var half = (a+b+c)/2;
+     var area = Math.sqrt(half * (half - a) * (half - b) * (half - c))
+        return area;
+    }
+
+    console.log(areaTriangle(5, 6, 7));;
+
 </script>
 </body>
 </html>
