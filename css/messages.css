@@ -1,0 +1,47 @@
+body, html {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    font-family: Arial, Ubuntu, sans-serif;
+}
+#message-info {
+    box-sizing: border-box;
+    background-color: #d0defc;
+    color: #5251a2;
+    padding: 7px;
+    margin: 7px;
+    width: 100%;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+}
+#message-success {
+    box-sizing: border-box;
+    background-color: #d6f2dc;
+    color: #488056;
+    padding: 7px;
+    margin: 7px;
+    width: 100%;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+}
+#message-warning {
+    box-sizing: border-box;
+    background-color: #fcface;
+    color: #9d8f43;
+    padding: 7px;
+    margin: 7px;
+    width: 100%;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+}
+#message-error {
+    box-sizing: border-box;
+    background-color: #f4d4d7;
+    color: #802c3d;
+    padding: 7px;
+    margin: 7px;
+    width: 100%;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+}
