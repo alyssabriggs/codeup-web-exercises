@@ -1,3 +1,13 @@
+:root {
+    --bg-info: #d0defc;
+    --text-info: #5251a2;
+    --bg-success: #d6f2dc;
+    --text-success: #488056;
+    --bg-warning: #fcface;
+    --text-warning: #9d8f43;
+    --bg-error: #f4d4d7;
+    --text-error: #802c3d;
+}
 body, html {
     height: 100%;
     width: 100%;
@@ -7,8 +17,8 @@ body, html {
 }
 #message-info {
     box-sizing: border-box;
-    background-color: #d0defc;
-    color: #5251a2;
+    background-color: var(--bg-info);
+    color: var(--text-info);
     padding: 7px;
     margin: 7px;
     width: 100%;
@@ -17,8 +27,8 @@ body, html {
 }
 #message-success {
     box-sizing: border-box;
-    background-color: #d6f2dc;
-    color: #488056;
+    background-color: var(--bg-success);
+    color: var(--text-success);
     padding: 7px;
     margin: 7px;
     width: 100%;
@@ -27,8 +37,8 @@ body, html {
 }
 #message-warning {
     box-sizing: border-box;
-    background-color: #fcface;
-    color: #9d8f43;
+    background-color: var(--bg-warning);
+    color: var(--text-warning);
     padding: 7px;
     margin: 7px;
     width: 100%;
@@ -37,8 +47,8 @@ body, html {
 }
 #message-error {
     box-sizing: border-box;
-    background-color: #f4d4d7;
-    color: #802c3d;
+    background-color: var(--bg-error);
+    color: var(--text-error);
     padding: 7px;
     margin: 7px;
     width: 100%;
