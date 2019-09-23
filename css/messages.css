@@ -15,43 +15,27 @@ body, html {
     margin: 0;
     font-family: Arial, Ubuntu, sans-serif;
 }
-#message-info {
+.message {
+    padding: 7px;
+    margin: 7px;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+    width: 80%;
     box-sizing: border-box;
+}
+.message-info {
     background-color: var(--bg-info);
     color: var(--text-info);
-    padding: 7px;
-    margin: 7px;
-    width: 100%;
-    border: 1px solid lightgrey;
-    border-radius: 5px;
 }
-#message-success {
-    box-sizing: border-box;
+.message-success {
     background-color: var(--bg-success);
     color: var(--text-success);
-    padding: 7px;
-    margin: 7px;
-    width: 100%;
-    border: 1px solid lightgrey;
-    border-radius: 5px;
 }
-#message-warning {
-    box-sizing: border-box;
+.message-warning {
     background-color: var(--bg-warning);
     color: var(--text-warning);
-    padding: 7px;
-    margin: 7px;
-    width: 100%;
-    border: 1px solid lightgrey;
-    border-radius: 5px;
 }
-#message-error {
-    box-sizing: border-box;
+.message-error {
     background-color: var(--bg-error);
     color: var(--text-error);
-    padding: 7px;
-    margin: 7px;
-    width: 100%;
-    border: 1px solid lightgrey;
-    border-radius: 5px;
 }
