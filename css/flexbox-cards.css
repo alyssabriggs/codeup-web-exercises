@@ -71,11 +71,5 @@ h3 {
     padding: 20px;
     border-radius: 4px;
     display: flex;
-    align-items: center;
-    align-content: center;
-    flex-direction: column;
-    justify-content: space-evenly;
-
+    flex-basis: 100%;
 }
-
-.card
