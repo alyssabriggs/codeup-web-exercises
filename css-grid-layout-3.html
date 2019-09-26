@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS Grid Layout</title>
+    <style>
+        * {
+            margin: 0;
+            box-sizing: border-box;
+        }
+        main {
+            display: grid;
+            grid-template-columns: repeat(9, 1fr) .5fr;
+            grid-template-rows: 1.2fr repeat(9, 1fr);
+            grid-gap: 10px;
+            height: 100vh;
+        }
+        div {
+            padding: 20px;
+        }
+        .header {
+            grid-area: 1 / 1 / 2 / 11;
+            background-color: gold;
+        }
+        .nav {
+            grid-area: 2 / 7 / 10 / 9;
+            background-color: gold;
+        }
+        .article {
+            grid-area: 2 / 1 / 10 / 7;
+            background-color: gold;
+        }
+        .footer {
+            grid-area: 10 / 1 / 11 / 11;
+            background-color: gold;
+        }
+        .ads {
+            grid-area: 2 / 9 / 10 / 11;
+            background-color: gold;
+        }
+    </style>
+</head>
+<body>
+<main>
+    <div class="header">Header</div>
+    <div class="nav">Nav</div>
+    <div class="article">Article</div>
+    <div class="footer">Footer</div>
+    <div class="ads">Ads</div>
+</main>
+</body>
+</html>
