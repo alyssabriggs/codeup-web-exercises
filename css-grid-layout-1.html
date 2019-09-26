@@ -10,8 +10,8 @@
         }
         main {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-            grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+            grid-template-columns: repeat(10, 1fr);
+            grid-template-rows: repeat(10, 1fr);
             grid-gap: 10px;
             height: 100vh;
         }
@@ -19,23 +19,23 @@
             padding: 20px;
         }
         .header {
-            grid-area: 1 / 1 / 2 / 7;
+            grid-area: 1 / 1 / 2 / 11;
             background-color: gold;
         }
         .nav {
-            grid-area: 2 / 1 / 7 / 2;
+            grid-area: 2 / 1 / 11 / 3;
             background-color: gold;
         }
         .article {
-            grid-area: 2 / 2 / 6 / 6;
+            grid-area: 2 / 3 / 10 / 9;
             background-color: gold;
         }
         .footer {
-            grid-area: 6 / 2 / 7 / 7;
+            grid-area: 10 / 3 / 11 / 11;
             background-color: gold;
         }
         .ads {
-            grid-area: 2 / 6 / 6 / 7;
+            grid-area: 2 / 9 / 10 / 11;
             background-color: gold;
         }
     </style>
