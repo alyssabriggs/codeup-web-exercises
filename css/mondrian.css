@@ -1,0 +1,75 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    text-align: center;
+}
+main {
+    margin-top: 2em;
+    background: lightgreen;
+    display: inline-grid;
+    grid-template-columns: repeat(8, 62.5px);
+    grid-template-rows: repeat(8, 62.5px);
+    border: 10px solid white;
+    border-radius: 10px;
+    outline: none;
+    box-shadow: 0px 0px 10px #888888;
+}
+main div {
+    font-size: 2em;
+    color: white;
+    background: grey;
+    display: flex;
+    border: 6px solid black;
+    justify-content: center;
+    align-items: center;
+}
+.blue {
+    grid-area: 1 / 1 / 3 / 3;
+    background: #334577;
+    border-bottom: none;
+    border-right: none;
+}
+.red {
+    grid-area: 1/ 3 / 4 / 9;
+    background: red;
+    border-bottom: none;
+}
+.yellow {
+    grid-area: 3 / 1 / 6 / 3;
+    background: gold;
+    border-bottom: none;
+    border-right: none;
+}
+.white {
+    grid-area: 6 / 1 / 8 / 3;
+    background-color: white;
+    border-bottom: none;
+    border-right: none;
+}
+.red2 {
+    grid-area: 8 / 1 / 9 / 3;
+    background: red;
+    border-right: none;
+}
+.white2 {
+    grid-area: 4 / 3 / 8 / 5;
+    background-color: white;
+    border-right: none;
+    border-bottom: none;
+}
+.blue2 {
+    grid-area: 8 / 3 / 9 / 9;
+    background: #334577;
+}
+.yellow2 {
+    grid-area: 6 / 5 / 8 / 9;
+    background: gold;
+    border-bottom: none;
+}
+.white3 {
+    grid-area: 4 / 5 / 6 / 9;
+    background-color: white;
+    border-bottom: none;
+}
