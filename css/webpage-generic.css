@@ -26,6 +26,7 @@ main {
     grid-area: 2 / 2 / 3 / 3;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+
 }
 footer {
     grid-area: 3 / 2 / 5 / 4;
