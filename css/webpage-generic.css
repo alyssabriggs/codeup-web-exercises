@@ -9,7 +9,7 @@ body {
 .wrapper {
     display: grid;
     grid-template-columns: .8fr 3fr 1fr;
-    grid-template-rows: .25fr repeat(9, 1fr);
+    /*grid-template-rows: .25fr repeat(9, 1fr);*/
     height: 100vh;
 }
 header {
@@ -18,23 +18,22 @@ header {
     font-size: 20px;
 }
 nav {
-    grid-area: 2 / 1 / 6 / 2;
+    grid-area: 2 / 1 / 5 / 2;
     background-color: #DDDDDD;
     font-size: 20px;
 }
 main {
-    grid-area: 2 / 2 / 4 / 3;
+    grid-area: 2 / 2 / 3 / 3;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: .25fr .5fr 3fr .25fr .5fr 3fr .25fr .5fr 3fr;
 }
 footer {
-    grid-area: 5 / 2 / 6 / 4;
+    grid-area: 3 / 2 / 5 / 4;
 }
 #first-foot {
     display: flex;
     align-items: center;
-    margin-top: 10px;
+    /*margin-top: 10px;*/
     padding: 10px;
     background-color: #848487;
     height: 90px;
@@ -120,7 +119,7 @@ main p:nth-of-type(3) {
     border: .5px solid lightgrey;
     grid-area: 9 / 2 / 10 / 3;
     height: 100px;
-    margin: 0;
+    margin: 0 0 100px 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -138,6 +137,7 @@ h1 {
     font-weight: lighter;
     color: #238570;
     padding-left: 10px;
+    margin-bottom: 0;
 }
 p {
     padding-left: 10px;
