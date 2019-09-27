@@ -8,8 +8,8 @@ body {
 }
 .wrapper {
     display: grid;
-    grid-template-columns: .5fr repeat(9, 1fr);
-    grid-template-rows: .25fr repeat(9, 1fr);
+    grid-template-columns: .5fr repeat(8, 1fr);
+    /*grid-template-rows: .25fr repeat(9, 1fr);*/
     height: 100vh;
 }
 header {
@@ -18,9 +18,51 @@ header {
     font-size: 20px;
 }
 nav {
-    grid-area: 2 / 1 / 11 / 3;
+    grid-area: 2 / 1 / 20 / 3;
     background-color: #DDDDDD;
     font-size: 20px;
+}
+main {
+    grid-area: 2 / 3 / 11 / 8;
+}
+.ad-box1 {
+    border: .5px solid black;
+    grid-area: 3 / 8 / 3 / 10;
+    height: 80px;
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.ad-box2 {
+    border: 1px solid black;
+    text-align: center;
+
+
+}
+.ad-box3 {
+    border: 1px solid black;
+    text-align: center;
+
+
+}
+.ad-box4 {
+    border: 1px solid black;
+    text-align: center;
+
+
+}
+.ad-box5 {
+    border: 1px solid black;
+    text-align: center;
+
+
+}
+.ad-box6 {
+    border: 1px solid black;
+    text-align: center;
+
+
 }
 ul {
     list-style: none;
@@ -31,8 +73,19 @@ li {
 a {
     padding: 15px;
 }
+h1 {
+    font-weight: lighter;
+    color: #238570;
+    padding-left: 10px;
+}
+p {
+    padding-left: 10px;
+}
 #menu {
     padding-bottom: 20px;
+}
+#logo {
+    background-color: grey;
 }
 .sidenav {
     color: black;
@@ -59,6 +112,6 @@ a {
     padding: 5px;
 }
 .topnav a:hover {
-    background-color: #404348;
+    background-color: white;
+    color: black;
 }
-
