@@ -1,4 +1,18 @@
-.jumbotron {
-    background-image: url("../img/pizza.png");
-    opacity: 100%;
+.display-4 {
+    background-color: white; opacity: .7;
+    /*z-index: 1;*/
+}
+.form-inline {
+    margin-right: 550px;
+}
+.nav-item {
+    list-style: none;
+}
+@media screen and (max-width: 768px){
+    .jumbotron {
+        display: none;
+    }
+}
+.card {
+    margin: 10px;
 }
