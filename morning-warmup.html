@@ -87,6 +87,15 @@
         return typeof(x);
     }
     console.log(checkType(Hello));
+
+    //Write a function that returns true only when passed a positive, even number
+    function evenPositive(num) {
+        if (num >= 0 && num % 2 === 0) {
+            return true;
+        }
+        return false;
+    }
+    console.log(evenPositive(4));
 </script>
 </body>
 </html>
