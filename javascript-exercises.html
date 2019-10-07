@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // You have rented some movies for your kids: The little mermaid (for 3 days), Brother Bear (for 5 days, they love it), and Hercules (1 day, you don't know yet if they're going to like it). If price for a movie per day is $3, how much will you have to pay?
+    function movies(a,b,c) {
+        return 3 * (a + b + c);
+    }
+    console.log(movies(3, 5, 1));
+
+
+    // Suppose you're working as a contractor for 3 companies: Google, Amazon and Facebook, they pay you a different rate per hour. Google pays $400, Amazon $380, and Facebook $350. How much will you receive in payment for this week? You worked 10 hours for Facebook, 6 hours for Google and 4 hours for Amazon.
+    function payCheck (g , a, f) {
+        return (400 * g) + (380 * a) + (350 * f);
+    }
+    console.log(payCheck(6, 4, 10));
+
+
+    // A student can be enrolled in a class only if the class is not full and the class schedule does not conflict with her current schedule.
+        function enrollment(a , b) {
+        return a && b;
+    }
+    console.log(enrollment(true, true));
+
+
+    // A product offer can be applied only if a person buys more than 2 items, and the offer has not expired. Premium members do not need to buy a specific amount of products.
+        function productOffer(products , valid , premium) {
+        return valid && (products > 2 || premium);
+    }
+    console.log(productOffer(2, true, false));
+
+
+    // Create a variable that holds a boolean value for each of the following conditions:
+    // the password must be at least 5 characters
+    // the password must not include the username
+    // the username must be no more than 20 characters
+    // neither the username or password can start or end with whitespace
+    var username = 'codeup';
+    var password = 'notastrongpassword';
+    password.length >= 5 && password.indexOf(username) === -1 && username.length <= 20 && username ===
+    username.trim() && password === password.trim();
+
+    // function exerciseFour(username, password) {
+    //     var username = 'codeup';
+    //     var password = 'notastrongpassword';
+    //     var p = password.length;
+    //     var u = username.length;
+    //     if (p >= 5 && p !== u && u <= 20) {
+    //         return true;
+    //     }
+    //     return false;
+    // // }
+    //
+    // console.log(exerciseFour());
+
+</script>
+</body>
+</html>
