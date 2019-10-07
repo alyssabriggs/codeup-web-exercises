@@ -17,19 +17,19 @@ var facebook = prompt("How many hours did you work at Facebook?");
 var totalHours = (400 * parseInt(google)) + (380 * parseInt(amazon)) + (350 * parseInt(facebook));
 alert("Your paycheck amount is " + totalHours + ".");
 
-function enrollment(a , b) {
-    var capacity = prompt("Is your class full?");
-    var time = prompt("Does this class conflict with your current schedule?")
-    if (capacity = "no"){
-        return true;
+
+var classFull = confirm("Is your class full?");
+var classSched = confirm ("Does this class conflict with your current schedule?")
+    if (classFull == false && classSched === false) {
+        alert("You may enroll in this class.");
     }
-    if (time = "no") {
-        return true;
-    }
-    return a && b;
+    else alert("You may not enroll in this class.");
+
+
+var offerValid = confirm("Is the offer still valid?");
+var numOfProducts = prompt("How many products are in your cart?");
+var isPremium = confirm("Are you a premium member?")
+    if ( offerValid && (numOfProducts >2 || isPremium)) {
+        alert("The offer has been applied to your cart.");
 }
-// function productOffer(products , valid , premium) {
-//     return valid && (products > 2 || premium);
-// }
-//
-// console.log(productOffer(1, false, true));
+    else alert("The offer has not been applied to your cart.");
