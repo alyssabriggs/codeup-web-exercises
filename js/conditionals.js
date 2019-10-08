@@ -1,5 +1,6 @@
 "use strict";
 
+(function () {
 /**
  * TODO:
  * Write some JavaScript that uses a `confirm` dialog to ask the user if they
@@ -50,6 +51,22 @@ if (number < 0) {
  * console.logging the function's return value
  */
 
+function analyzeColor(color) {
+    if (color === "blue") {
+        return (color + " is the color of blueberries!");
+    }
+    else if (color === "red") {
+        return (color + " is the color of my favorite fruit, strawberries.");
+    }
+    else if (color === "cyan") {
+        return ("I have no idea what " + color + " looks like.");
+    }
+    else {
+        return ("That is not one of the approved colors. ");
+    }
+}
+    console.log(analyzeColor("blue"));
+
 // Don't change the next two lines!
 // These lines create two variables for you:
 // - `colors`: a list of the colors of the rainbow
@@ -63,18 +80,37 @@ var randomColor = colors[Math.floor(Math.random() * colors.length)];
  * You should see a different message everytime you refresh the page
  */
 
-/**
+console.log(analyzeColor(randomColor));
+    /**
  * TODO:
  * Refactor your above function to use a switch-case statement
  */
+    function analyzeColorTwo(color) {
+        switch(color) {
+            case "blue" :
+                alert(color + " is the color of blueberries!");
+                break;
+            case "red" :
+                alert(color + " is the color of my favorite fruit, strawberries.");
+                break;
+            case "cyan" :
+                alert("I have no idea what " + color + " looks like.");
+                break;
+            default :
+            alert("That is not one of the approved colors. ");
+            break;
+        }
+    }
 
-/**
+    console.log(analyzeColorTwo("blue"));
+    /**
  * TODO:
  * Prompt the user for a color when the page loads, and pass the input from the
  * user to your `analyzeColor` function. Alert the return value from your
  * function to show it to the user.
  */
-
+var userColor = prompt("Please enter your favorite color:");
+alert("I see you said " + userColor + " is your favorite color. Great choice!")
 /* ########################################################################## */
 
 /**
@@ -96,7 +132,27 @@ var randomColor = colors[Math.floor(Math.random() * colors.length)];
  * Test your function by passing it various values and checking for the expected
  * return value.
  */
-
+function calculateTotal(a, b) {
+    if (a === 0){
+        return b - (0 * b);
+    }
+    else if (a === 1) {
+        return b - (.10 * b);
+    }
+    else if (a === 2) {
+        return b - (.25 * b);
+    }
+    else if (a === 3) {
+        return b - (.35 * b);
+    }
+    else if (a === 4) {
+        return b - (.50 * b);
+    }
+    else if (a === 5) {
+        return b - (1 * b);
+    }
+}
+console.log(calculateTotal(4, 400));
 /**
  * TODO:
  * Uncomment the line below to generate a random number between 0 and 6.
@@ -105,4 +161,10 @@ var randomColor = colors[Math.floor(Math.random() * colors.length)];
  * price before the discount was, and what their price after the discount is.
  */
 // Generate a random number between 0 and 6
-// var luckyNumber = Math.floor(Math.random() * 6);
+var luckyNumber = Math.floor(Math.random() * 6);
+var total = prompt("What is your total bill?");
+var newTotal = calculateTotal(luckyNumber, total);
+alert("Your lucky number was " + luckyNumber + " and your price before discount was " + total + ".");
+alert("Your new total is: " + newTotal + ".");
+
+})();
