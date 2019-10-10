@@ -34,21 +34,35 @@
 // }
 
 function whatsYourNumber() {
-    var participate = confirm("Would you like to enter a number?");
-        if (participate === true) {
-            var number = prompt("Please enter a number:");
-            if (number % 2 === 0) {
-                alert("The number is even.");
-            }
-            if (number % 2 !== 0) {
-                alert("The number is odd.");
-            }
-            alert("The number plus 100 is " + (parseInt(number) + 100) + ".")
-            if (number >= 0) {
-                alert("The number is positive.")
-            }
-            if (number < 0) {
-                alert("The number is negative.")
+    var userConfirm = confirm("Would you like to enter a number?");
+        if (userConfirm) {
+            var userInput = prompt("Please enter a number:");
+
+            console.log("The users number:" + userInput);
+
+            var isNumber = !isNaN(userInput);
+
+            console.log("The user entered a number: " + isNumber);
+
+            if(isNumber){
+
+                var userNumber = parseFloat(userInput);
+
+                if (userNumber % 2 === 0) {
+                    alert("The number is even.");
+                }
+                if (userNumber % 2 !== 0) {
+                    alert("The number is odd.");
+                }
+                alert("The number plus 100 is " + (userNumber + 100) + ".")
+                if (userNumber >= 0) {
+                    alert("The number is positive.")
+                }
+                if (userNumber < 0) {
+                    alert("The number is negative.")
+                }
+            } else {
+                alert("Hey that's not a number!");
             }
         }
         else {
@@ -136,7 +150,7 @@ console.log(analyzeColor(randomColor));
  * function to show it to the user.
  */
 var userColor = prompt("Please enter your favorite color:");
-alert("I see you said " + userColor + " is your favorite color. Great choice!")
+alert(analyzeColor(userColor));
 /* ########################################################################## */
 
 /**
@@ -158,25 +172,29 @@ alert("I see you said " + userColor + " is your favorite color. Great choice!")
  * Test your function by passing it various values and checking for the expected
  * return value.
  */
-function calculateTotal(a, b) {
-    if (a === 0){
-        return b - (0 * b);
+function calculateTotal(luckyNumber, totalPrice) {
+    var discountRate = 0;
+    switch (luckyNumber) {
+        case 0 :
+            discountRate = 0;
+            break;
+        case 1 :
+            discountRate = .1;
+            break;
+        case 2 :
+            discountRate = .25;
+            break;
+        case 3 :
+            discountRate = .35;
+            break;
+        case 4 :
+            discountRate = .5;
+            break;
+        case 5 :
+            discountRate = 1;
+            break;
     }
-    else if (a === 1) {
-        return b - (.10 * b);
-    }
-    else if (a === 2) {
-        return b - (.25 * b);
-    }
-    else if (a === 3) {
-        return b - (.35 * b);
-    }
-    else if (a === 4) {
-        return b - (.50 * b);
-    }
-    else if (a === 5) {
-        return b - (1 * b);
-    }
+    return totalPrice - (discountRate * totalPrice);
 }
 console.log(calculateTotal(4, 400));
 /**
@@ -188,9 +206,11 @@ console.log(calculateTotal(4, 400));
  */
 // Generate a random number between 0 and 6
 var luckyNumber = Math.floor(Math.random() * 6);
-var total = prompt("What is your total bill?");
-var newTotal = calculateTotal(luckyNumber, total);
+    console.log(luckyNumber);
+
+var total = parseFloat(prompt("What is your total bill?"));
+var finalTotal = calculateTotal(luckyNumber, total);
 alert("Your lucky number was " + luckyNumber + " and your price before discount was " + total + ".");
-alert("Your new total is: " + newTotal + ".");
+alert("Your new total is: " + finalTotal + ".");
 
 })();
