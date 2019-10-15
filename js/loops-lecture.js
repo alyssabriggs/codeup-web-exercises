@@ -159,13 +159,13 @@
 //     }
 // }
 
-for (var b = 100; b > 1; b--){
-    if (b === 10){
-        console.log("skip: " + b);
-        continue;
-    }
-    console.log(b);
-}
+// for (var b = 100; b > 1; b--){
+//     if (b === 10){
+//         console.log("skip: " + b);
+//         continue;
+//     }
+//     console.log(b);
+// }
 
 /*
 * BREAK AND CONTINUE
