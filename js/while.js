@@ -12,12 +12,15 @@ var allCones = Math.floor(Math.random() * 50) + 50;
 
 do {
     //how many cones someone wants to buy
-    var randomNum = Math.floor(Math.random() * 5) + 1;
-    if (randomNum < allCones) {
-        console.log(randomNum + " cones sold.");
-    } else if (randomNum > allCones) {
-        console.log("I cannot sell you " + randomNum + " cones, I only have " + allCones)
+    var customer = Math.floor(Math.random() * 5) + 1;
+    console.log(allCones);
+    if (customer <= allCones) {
+        allCones -= customer;
+        console.log(customer + " cones sold.");
     } else if (allCones === 0) {
         console.log("Yay! I sold them all!")
+    } else {
+        console.log("I cannot sell you " + customer + " cones, I only have " + allCones)
     }
 }while (allCones > 0);
+
