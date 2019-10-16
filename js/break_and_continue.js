@@ -6,7 +6,6 @@ do {
       for (var b = 1; b < 51; b++){
           if (b == number){
               console.log("Number to skip is " + number);
-              continue;
           } else if (b % 2 !== 0){
               console.log("Here is an odd number: " + b);
           }
