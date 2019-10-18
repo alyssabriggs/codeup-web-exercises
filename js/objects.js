@@ -27,6 +27,12 @@
      * Example
      * > console.log(person.sayHello()) // "Hello from Rick Sanchez!"
      */
+    person.sayHello = function () {
+        return "Hello from " + this.firstName + " " + this.lastName + "!";
+    };
+
+    console.log(person.sayHello());
+
 
     /** TODO:
      * HEB has an offer for the shoppers that buy products amounting to
@@ -42,11 +48,27 @@
      * and console.log the relevant messages for each person
      */
 
-    // var shoppers = [
-    //     {name: 'Cameron', amount: 180},
-    //     {name: 'Ryan', amount: 250},
-    //     {name: 'George', amount: 320}
-    // ];
+
+    var shoppers = [
+        {name: 'Cameron', amount: 180},
+        {name: 'Ryan', amount: 250},
+        {name: 'George', amount: 320}
+    ];
+
+
+
+shoppers.forEach(function (shopper) {
+    console.log(shopper.name);
+    console.log(shopper.amount);
+    var discount = .12;
+    if (shopper.amount > 200) {
+        console.log(shopper.name + " spent $" + shopper.amount + " and gets the 12% discount. The new total is $" + (parseFloat(shopper.amount) - (parseFloat(shopper.amount) * discount)) + ".");
+    } else {
+        console.log(shopper.name + " spent $" + shopper.amount + " and does not get the 12% discount. The total" +
+            " remains $" + shopper.amount + ".");
+    }
+});
+
 
     /** TODO:
      * Create an array of objects that represent books and store it in a
@@ -60,6 +82,47 @@
      * > console.log(books[0].author.firstName) // "Douglas"
      * > console.log(books[0].author.lastName) // "Adams"
      */
+
+
+    var books = [
+        {
+            title: "Harry Potter and the Chamber of Secrets",
+            author: {
+                firstName: "JK",
+                lastName: "Rowling"
+            }
+        },
+        {
+            title: "Twilight",
+            author: {
+                firstName: "Stephanie",
+                lastName: "Meyers"
+            }
+        },
+        {
+            title: "A Dyamond in the Rough",
+            author: {
+                firstName: "Dyme",
+                lastName: "Taylor"
+            }
+        },
+        {
+            title: "Helium",
+            author: {
+                firstName: "Rudy",
+                lastName: "Francisco"
+            }
+        },
+        {
+            title: "Cravings",
+            author: {
+                firstName: "Chrissy",
+                lastName: "Teigen"
+            }
+        }
+    ];
+
+
 
     /**
      * TODO:
@@ -86,6 +149,12 @@
      *      ...
      */
 
+    books.forEach(function (book, index) {
+        console.log(index);
+        console.log(book.title);
+        console.log(book.author.firstName + " " + book.author.lastName);
+    });
+
     /**
      * Bonus:
      * - Create a function named `createBook` that accepts a title and author
@@ -97,4 +166,7 @@
      *   `showBookInfo` function.
      */
 
+    function createBook(title, author) {
+
+    }
 })();
