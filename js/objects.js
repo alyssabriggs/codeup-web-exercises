@@ -149,20 +149,13 @@ shoppers.forEach(function (shopper) {
      *      ...
      */
 
-    books.forEach(function (book, index) {
-        console.log(parseFloat(index) + 1);
-        console.log(book.title);
-        console.log(book.author.firstName + " " + book.author.lastName);
-    });
-
-    // books.forEach(function (book, i) {
-    //    var output = "";
-    //    output += "Book # " + (i + 1) + "\n";
-    //    output += "Title: " + book.title + "\n";
-    //    output += "Author: " +book.author.firstName + " " + book.author.lastName + "\n";
-    //    output += "---";
-    //    console.log(output);
+    // books.forEach(function (book, index) {
+    //     console.log(parseFloat(index) + 1);
+    //     console.log(book.title);
+    //     console.log(book.author.firstName + " " + book.author.lastName);
     // });
+
+    books.forEach(showBookInfo);
 
     /**
      * Bonus:
@@ -195,7 +188,7 @@ shoppers.forEach(function (shopper) {
         output += "Author: " +book.author.firstName + " " + book.author.lastName + "\n";
         output += "---";
         console.log(output);
-}
+    }
 
 
 
