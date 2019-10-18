@@ -1,4 +1,4 @@
-(function() {
+// (function() {
     "use strict";
 
     /**
@@ -13,7 +13,7 @@
      */
     var person = {
         firstName: "Alyssa",
-        lastName: "Briggs"
+        lastName: "B"
     };
 
     console.log(person.firstName);
@@ -150,10 +150,19 @@ shoppers.forEach(function (shopper) {
      */
 
     books.forEach(function (book, index) {
-        console.log(index);
+        console.log(parseFloat(index) + 1);
         console.log(book.title);
         console.log(book.author.firstName + " " + book.author.lastName);
     });
+
+    // books.forEach(function (book, i) {
+    //    var output = "";
+    //    output += "Book # " + (i + 1) + "\n";
+    //    output += "Title: " + book.title + "\n";
+    //    output += "Author: " +book.author.firstName + " " + book.author.lastName + "\n";
+    //    output += "---";
+    //    console.log(output);
+    // });
 
     /**
      * Bonus:
@@ -166,7 +175,28 @@ shoppers.forEach(function (shopper) {
      *   `showBookInfo` function.
      */
 
-    function createBook(title, author) {
-
+    function createBook(title, first, last) {
+        var book = {};
+        book.title = title;
+        book.author = {
+            firstName: first,
+            lastName: last
+        };
+        return book;
     }
-})();
+
+    books.push(createBook("Cat's Cradle", "Kurt", "V"));
+
+
+    function showBookInfo(book, i){
+        var output = "";
+        output += "Book # " + (i + 1) + "\n";
+        output += "Title: " + book.title + "\n";
+        output += "Author: " +book.author.firstName + " " + book.author.lastName + "\n";
+        output += "---";
+        console.log(output);
+}
+
+
+
+// })();
