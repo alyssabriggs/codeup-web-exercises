@@ -23,15 +23,20 @@
      * list. You will need an opening AND closing <ul> tags around the entire
      * string, and <li> tags around each planet.
      */
-    planetsString = planetsArray.join('<br>');
-    console.log(planetsString);
-    document.write(planetsString);
+    var planetsBR = planetsArray.join('<br>');
+    document.write(planetsBR);
 
     //BONUS
-    var planetsArray2 = planetsArray.join('<li></li>');
-    var planetsArray3 = planetsArray2.unshift('<ul>');
-    var planetsArray4 =  planetsArray3.push('</ul>');
-    console.log(planetsArray4);
-    document.write(planetsArray4);
+
+    var planetsUL = "<ul>";
+    planetsArray.forEach(function (planet) {
+        planetsUL += "<li>" + planet + "</li>"
+    });
+
+    planetsUL += "</ul>";
+
+    document.write(planetsUL);
+
+
 })();
 

@@ -152,14 +152,14 @@
 
     //Write a JavaScript function that takes in  floating point number, and returns a number rounded down. It should return false for all inputs that aren't numbers.
     function roundDown(num) {
-        if (!isNaN(num)) {
+        if (typeof num === 'number' && !isNaN(num)) {
             return Math.floor(num);
         } else {
             return false;
         }
     }
 
-    console.log(roundDown("dog"));
+    console.log(roundDown("3"));
 </script>
 </body>
 </html>
