@@ -1,4 +1,4 @@
-(function(){
+(function() {
     "use strict";
 
     var planetsString = "Mercury|Venus|Earth|Mars|Jupiter|Saturn|Uranus|Neptune";
@@ -28,5 +28,10 @@
     document.write(planetsString);
 
     //BONUS
-
+    var planetsArray2 = planetsArray.join('<li></li>');
+    var planetsArray3 = planetsArray2.unshift('<ul>');
+    var planetsArray4 =  planetsArray3.push('</ul>');
+    console.log(planetsArray4);
+    document.write(planetsArray4);
 })();
+
