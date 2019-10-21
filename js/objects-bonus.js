@@ -976,6 +976,7 @@ var profiles = [
     }
 ];
 
+//Exercise 5
 var profileReport = {
     getProfileCount: function () {
         return profiles.length;
@@ -1011,9 +1012,18 @@ var profileReport = {
             sum += parseFloat(profiles[i].balance.replace("$", "").replace(",", ""));
         }
         return  sum / profiles.length;
+    },
+    getLowestBalance: function () {
+        var lowBalance = profiles.reduce((p, c) => p.balance < c.balance ? p : c);
+        return lowBalance.balance;
+    },
+    getHighestBalance: function () {
+        var lowBalance = profiles.reduce((p, c) => p.balance > c.balance ? p : c);
+        return lowBalance.balance;
+    },
+    getMostFavoriteFruit: function () {
+
     }
-
-
 };
 
 console.log(profileReport.getProfileCount());
@@ -1021,3 +1031,6 @@ console.log(profileReport.getActiveCount());
 console.log(profileReport.getInactiveCount());
 console.log(profileReport.sumOfAllBalances());
 console.log(profileReport.getAverageBalance());
+console.log(profileReport.getLowestBalance());
+console.log(profileReport.getHighestBalance());
+console.log(profileReport.getMostFavoriteFruit());

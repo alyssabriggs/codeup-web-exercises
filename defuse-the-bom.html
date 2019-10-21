@@ -27,10 +27,14 @@
         detonationTimer--;
     }, 1000);
 
+    // setInterval(updateTimer, 1000);
+
     // TODO: When this function runs, it needs to
     // cancel the interval/timeout for updateTimer()
     function defuseTheBOM() {
         clearInterval(intervalId);
+        alert("You survived....this time.")
+        // window.location = "http://www.google.com";
     }
 
     // Don't modify anything below this line!
