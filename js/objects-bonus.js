@@ -97,9 +97,9 @@ console.log(salesReport.getEmployeeCount());
 
 salesReport.getTotalNumberOfSales = function () {
     salesReport.salesUnits.forEach(function (unit) {
-        unit += unit;
+         += unit;
     });
 
-    console.log("Employee count is: " + unit + ".");
+    console.log("Employee count is: " +  + ".");
 };
 console.log(salesReport.getTotalNumberOfSales());
