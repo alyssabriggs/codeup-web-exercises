@@ -52,8 +52,8 @@
 
         // TODO: Set text color of li with dbid = 1 to blue
         for (var i = 0; i < listItems.length; i++) {
-            var x = document.getElementsByTagName("li")[i].getAttribute("data-dbid");
-            if (x == 1){
+            var x = parseInt(document.getElementsByTagName("li")[i].getAttribute("data-dbid"));
+            if (x === 1){
                 listItems[i].style.color = "blue";
             }
         }
