@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>First Mapbox Map</title>
+    <!-- Mapbox CSS -->
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
+    <!-- Custom CSS -->
+    <style>
+        #map { position:absolute; top:0; bottom:0; width:100%; }
+    </style>
+    <style>
+
+        #marker {
+            background-image: url("img/Rascals+Logo.png");
+            background-size: cover;
+            width: 120px;
+            height: 90px;
+            cursor: pointer;
+        }
+        #marker2 {
+            background-image: url("img/buca-logo.png");
+            background-size: cover;
+            width: 180px;
+            height: 120px;
+            cursor: pointer;
+        }
+        #marker3 {
+            background-image: url("img/smashin-crab.png");
+            background-size: cover;
+            width: 100px;
+            height: 120px;
+            cursor: pointer;
+        }
+        .mapboxgl-popup {
+            max-width: 200px;
+        }
+
+    </style>
+</head>
+<body>
+
+<h1>My First Mapbox Map!</h1>
+
+<!-- The HTML element that serves as the Mapbox container -->
+<div id='map'></div>
+
+<!-- Mapbox JS -->
+<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
+<script src="js/keys.js"></script>
+<script src="js/mapbox-geocoder-utils.js"></script>
+
+<!-- Custom JS -->
+<script>
+    mapboxgl.accessToken = mapboxToken;
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/satellite-streets-v10',
+        zoom: 10,
+    });
+
+    geocode("1540 W. Artesia Blvd., Gardena, CA 90248", mapboxToken).then(function(result) {
+        console.log(result);
+        map.setCenter(result);
+        map.setZoom(16);
+
+        // create the popup
+        var popup = new mapboxgl.Popup()
+            .setText('Rascals has the best teriyaki!');
+
+// create DOM element for the marker
+        var el = document.createElement('div');
+        el.id = 'marker';
+
+// create the marker
+        new mapboxgl.Marker(el)
+            .setLngLat(result)
+            .setPopup(popup) // sets a popup on this marker
+            .addTo(map);
+
+    });
+    geocode("3612 Tudor Blvd, Austin, TX 78759", mapboxToken).then(function(result) {
+        console.log(result);
+        map.setCenter(result);
+        map.setZoom(16);
+
+        // create the popup
+        var popup = new mapboxgl.Popup()
+            .setText('Buca is the best Italian restaurant!');
+
+// create DOM element for the marker
+        var el = document.createElement('div');
+        el.id = 'marker2';
+
+// create the marker
+        new mapboxgl.Marker(el)
+            .setLngLat(result)
+            .setPopup(popup) // sets a popup on this marker
+            .addTo(map);
+
+    });
+    geocode("700 East Sonterra, Suite 1117, San Antonio, Texas 78258", mapboxToken).then(function(result) {
+        console.log(result);
+        map.setCenter(result);
+        map.setZoom(16);
+
+        // create the popup
+        var popup = new mapboxgl.Popup()
+            .setText('Smashin Crab is the best seafood in SA!');
+
+// create DOM element for the marker
+        var el = document.createElement('div');
+        el.id = 'marker3';
+
+// create the marker
+        new mapboxgl.Marker(el)
+            .setLngLat(result)
+            .setPopup(popup) // sets a popup on this marker
+            .addTo(map);
+
+    });
+
+</script>
+
+
+</body>
+</html>
