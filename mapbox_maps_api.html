@@ -59,6 +59,7 @@
         zoom: 10,
     });
 
+
     geocode("1540 W. Artesia Blvd., Gardena, CA 90248", mapboxToken).then(function(result) {
         console.log(result);
         map.setCenter(result);
@@ -86,7 +87,7 @@
 
         // create the popup
         var popup = new mapboxgl.Popup()
-            .setText('Buca is the best Italian restaurant!');
+            .setText('Buca Di Beppo');
 
 // create DOM element for the marker
         var el = document.createElement('div');
@@ -99,14 +100,14 @@
             .addTo(map);
 
     });
-    geocode("700 East Sonterra, Suite 1117, San Antonio, Texas 78258", mapboxToken).then(function(result) {
+    geocode("8910 Bandera Rd, Suite 305, San Antonio, TX 78250", mapboxToken).then(function(result) {
         console.log(result);
         map.setCenter(result);
         map.setZoom(16);
 
         // create the popup
         var popup = new mapboxgl.Popup()
-            .setText('Smashin Crab is the best seafood in SA!');
+            .setText('Smashin Crab');
 
 // create DOM element for the marker
         var el = document.createElement('div');
