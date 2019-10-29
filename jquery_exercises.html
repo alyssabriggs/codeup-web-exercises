@@ -5,13 +5,50 @@
     <title>JQuery Exercise</title>
 </head>
 <body>
+
+<h1 class="codeup" id="store-name">AB's Record Store</h1>
+<div>
+<p id="welcome" class="codeup">Welcome to my record store.</p>
+<ul class="top-artists codeup">
+    <h4 id="artists">Our Top Artists: </h4>
+    <li id="21savage"> 21 Savage </li>
+    <li id="lana"> Lana Del Ray </li>
+    <li id="summer"> Summer Walker </li>
+    <li id="6lack"> 6lack </li>
+    <li id="nao"> Nao </li>
+</ul>
+    <ul class="top-albums">
+        <h4 id="albums">Our Top Albums: </h4>
+        <li id="ari"> Thank U, Next </li>
+        <li id="nfr"> Norman F Rockwell </li>
+        <li id="overIt"> Over It </li>
+        <li id="khalid"> American Teen </li>
+        <li id="dvsn"> September 5th </li>
+    </ul>
+</div>
 <script src="js/jquery-2.2.4.js"></script>
 <script>
     "use strict";
+    $('li').css('font-size', '20px');
 
-    $(document).ready(function () {
-        alert("The DOM has finished loading.");
-    });
+    // $('h1').css('background-color', '#982913');
+    // $('p').css('background-color', '#982913');
+    // $('li').css('background-color', '#982913');
+
+    $('h1, p, li').css('background-color', '#982913');
+
+    var contents = $('h1').html();
+    alert(contents);
+
+    // $('.codeup').css('border', '1px solid red')
+
+    // $(document).ready(function () {
+    //     alert("The DOM has finished loading.");
+    // });
+
+    // var contents = $('#store-name').html();
+    // console.log(contents);
+
 </script>
 </body>
 </html>
