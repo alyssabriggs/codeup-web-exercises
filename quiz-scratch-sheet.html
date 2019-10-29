@@ -7,8 +7,20 @@
 <body>
 <script>
 
+    function analyzeWord(word){
+        var obj = {};
+        var letterCount = word.length;
+        var matches = word.match(/[aeiou]/gi);
+        var vowelCount =  matches ? matches.length : 0;
+        obj = {
+            word: word,
+            numberOfLetters: letterCount,
+            numberOfVowels: vowelCount
+        };
+        return obj;
+    }
 
-
+    console.log(analyzeWord("excellent"));
 
 </script>
 </body>
