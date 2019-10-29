@@ -6,10 +6,14 @@
 </head>
 <body>
 
-<h1 class="codeup" id="store-name">AB's Record Store</h1>
+<h1 class="codeup" id="store-name">
+    AB's Record Store
+</h1>
 <div>
 <p id="welcome" class="codeup">Welcome to my record store.</p>
-<ul class="top-artists codeup">
+</div>
+    <div>
+<ul class="top-artists paragraph">
     <h4 id="artists">Our Top Artists: </h4>
     <li id="21savage"> 21 Savage </li>
     <li id="lana"> Lana Del Ray </li>
@@ -17,6 +21,7 @@
     <li id="6lack"> 6lack </li>
     <li id="nao"> Nao </li>
 </ul>
+        <p class="paragraph">We are big on advertising our top sellers.</p>
     <ul class="top-albums">
         <h4 id="albums">Our Top Albums: </h4>
         <li id="ari"> Thank U, Next </li>
@@ -29,16 +34,16 @@
 <script src="js/jquery-2.2.4.js"></script>
 <script>
     "use strict";
-    $('li').css('font-size', '20px');
+    // $('li').css('font-size', '20px');
 
     // $('h1').css('background-color', '#982913');
     // $('p').css('background-color', '#982913');
     // $('li').css('background-color', '#982913');
 
-    $('h1, p, li').css('background-color', '#982913');
-
-    var contents = $('h1').html();
-    alert(contents);
+    // $('h1, p, li').css('background-color', '#982913');
+    //
+    // var contents = $('h1').html();
+    // alert(contents);
 
     // $('.codeup').css('border', '1px solid red')
 
@@ -49,6 +54,22 @@
     // var contents = $('#store-name').html();
     // console.log(contents);
 
+    $('#store-name').click(function () {
+        $(this).css('background-color', 'cyan');
+    })
+
+    $('p').dblclick(function (e) {
+        $(this).css('font-size', '18px');
+    })
+
+    $('li').hover(
+        function () {
+        $(this). css('color', 'red');
+    },
+    function () {
+        $(this).css('color', 'black');
+    }
+    );
 </script>
 </body>
 </html>
