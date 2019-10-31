@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Konami Code</title>
+    <link href="https://fonts.googleapis.com/css?family=Bungee+Inline&display=swap" rel="stylesheet">
+
+    <style>
+        .won{
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            z-index: 1;
+            color: #99ca31;
+            font-family: 'Bungee Inline', cursive;
+            font-size: 100px;
+            text-shadow: #111111;
+        }
+    </style>
+</head>
+<body>
+<!--<h1>Konami Code</h1>-->
+<div class="won">
+
+</div>
+
+<script src="js/jquery-2.2.4.js"></script>
+<script>
+    "use strict";
+
+    $(document).keyup(function(event){
+        console.log(event.keyCode);
+    });
+
+    var allowedKeys = {
+        37: 'ArrowLeft',
+        38: 'ArrowUp',
+        39: 'ArrowRight',
+        40: 'ArrowDown',
+        65: 'a',
+        66: 'b',
+        13: 'Enter'
+    };
+
+    var konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft',
+        'ArrowRight',
+        'b', 'a', 'Enter'];
+
+    var i = 0;
+
+    $('body').keydown(function (e) {
+        var key = allowedKeys[e.keyCode];
+        var requiredKey = konamiCode[i];
+
+        if (key == requiredKey){
+            i++;
+            if (i == konamiCode.length){
+                goCrazy();
+                i = 0;
+            }
+        } else {
+            i = 0;
+            tryHarder();
+        }
+    });
+    // var win = $("won");
+    function goCrazy() {
+        $('body').css('background-image', 'url(' + "img/sparkles.gif" + ')').css('background-repeat', 'repeat');
+        $('.won').html('<h1>YOU WON</h1>');
+
+        var audio = new Audio('img/magic-chime-03.mp3');
+        audio.play();
+
+        alert("You have added 30 lives!");
+    }
+
+    function tryHarder() {
+        $('body').css('background-image', 'url(' + "img/tried.gif" + ')').css('background-repeat', 'repeat');
+        $('.won').html('');
+
+        var audio = new Audio('img/doh.mp3');
+        audio.play();
+    }
+
+
+</script>
+
+</body>
+</html>
