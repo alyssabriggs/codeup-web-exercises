@@ -6,6 +6,14 @@
     <link rel="stylesheet" href="css/jquery_faq.css">
 </head>
 <body>
+
+<div>
+    <h1>
+        Would you like to sign up for our newsletter?
+    </h1>
+    <span> X </span>
+</div>
+<h2>Would you like to register for the site?</h2>
 <button type="button" class="toggle">Click Here</button>
 <dl>
     <dt><em>Zion National Park</em></dt>
@@ -95,12 +103,14 @@
 
 $(document).ready(function() {
 
-        $('dd').addClass('invisible');
+    $('dd').addClass('invisible');
 
     $('.toggle').click(function(event){
         event.preventDefault();
         $('dd').toggleClass('invisible');
     });
+
+    $('h3').next().hide();
 
     $('.highlight').click(function () {
         $('ul').each(function () {
@@ -110,11 +120,24 @@ $(document).ready(function() {
 
     $('h3').click(function () {
         $(this).next().children().css('font-weight', 'bold');
+        $(this).next().slideToggle(500);
     });
+
+
 
     $('li').click(function () {
         $(this).parent().children().first().css('color', 'blue');
     });
+
+    $('span').click(function () {
+        $('div').hide();
+    });
+
+    $('h2').hide();
+    setTimeout(function() {
+        $('h2').first().fadeIn(2000);
+    }, 2000);
+
 });
 
 
