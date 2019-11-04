@@ -4,17 +4,23 @@
     <meta charset="UTF-8">
     <title>JQuery FAQ</title>
     <link rel="stylesheet" href="css/jquery_faq.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
 
 <div>
-    <h1>
-        Would you like to sign up for our newsletter?
-    </h1>
-    <span> X </span>
+    <div class="alert alert-warning alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h1>
+            Would you like to sign up for our newsletter?
+        </h1>
+    </div>
 </div>
-<h2>Would you like to register for the site?</h2>
-<button type="button" class="toggle">Click Here</button>
+
+    <h2 class="my-alert">Would you like to register for the site?</h2>
+<br>
+<button type="button" class="toggle btn btn-info">Show that FAQ!</button>
+<br><br>
 <dl>
     <dt><em>Zion National Park</em></dt>
     <dd><strong>Q: Where can I ride my bike in Zion National Park?</strong><br>
@@ -56,17 +62,16 @@
     A: It is a common misconception that one will see an entire prairie of six feet tall grasses blowing in the wind at any time of the year. In the spring the grasses will not have reached their full height; they are just beginning to grow. It takes nature an entire season to grow the prairie grasses. Think of "tall in the fall". The tallest grasses grow in the bottomland areas where water is more readily available and the soils are deeper. The grasses on the prairie uplands will generally grow between three and five feet high.</dd>
 <br><br>
 <dt><em>Appomattox Court House</em></dt>
-<dd><strong>Where's the courthouse, where the surrender took place?</strong><br>
-    The surrender occurred in the village of Appomattox Court House, Virginia in a private home owned by the McLean family. In Virginia many of the towns which were county seats were called "Court House". The building is spelled courthouse (one word) and the town is Court House (two words).</dd>
+<dd><strong>Q: Where's the courthouse, where the surrender took place?</strong><br>
+    A: The surrender occurred in the village of Appomattox Court House, Virginia in a private home owned by the McLean
+    family. In Virginia many of the towns which were county seats were called "Court House". The building is spelled courthouse (one word) and the town is Court House (two words).</dd>
 <br><br>
 <dt><em>Death Valley</em></dt>
-<dd><strong>Why is it called Death Valley?</strong><br>
-    Death Valley was given its forbidding name by a group of pioneers lost here in the winter of 1849-1850. Even
+<dd><strong>Q: Why is it called Death Valley?</strong><br>
+    A: Death Valley was given its forbidding name by a group of pioneers lost here in the winter of 1849-1850. Even
     though, as far as we know, only one of the group died here, they all assumed that this valley would be their
     grave. They were rescued by two of their young men, William Lewis Manly and John Rogers, who had learned to be scouts. As the party climbed out of the valley over the Panamint Mountains, one of the men turned, looked back, and said "goodbye, Death Valley." This name, and the story of The Lost '49ers have become part of our western history.</dd>
 </dl>
-
-<button type="button" class="highlight">Yellow it Up!</button>
 
     <h3>Arches</h3>
     <ul>
@@ -94,10 +99,14 @@
     <li>In September 1964, after several years of debate, President Lyndon B. Johnson signed Pub.L. 88–590, which established Canyonlands National Park as a new national park. </li>
 </ul>
 
+<button type="button" class="highlight btn btn-warning">Yellow it Up!</button>
+
 
 
 </body>
 <script src="js/jquery-2.2.4.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <script>
 "use strict";
 
@@ -129,14 +138,16 @@ $(document).ready(function() {
         $(this).parent().children().first().css('color', 'blue');
     });
 
-    $('span').click(function () {
+    $('.span-close').click(function () {
         $('div').hide();
     });
 
-    $('h2').hide();
-    setTimeout(function() {
-        $('h2').first().fadeIn(2000);
-    }, 2000);
+    $('.my-alert').hide();
+
+    $('.my-alert').delay(8000).fadeIn(2000);
+    // setTimeout(function() {
+    //     $('.my-alert').fadeIn(2000);
+    // }, 2000);
 
 });
 
