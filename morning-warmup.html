@@ -339,6 +339,43 @@
     }
 
     console.log(height(hamsters));
+
+
+    //List out three of your favorite web applications. Explain why.
+//    Google, Twitter, Instagram.
+
+
+    //Write a Javascript function that will take in the whole numbers 1 -10, and return the number spelled out as a string.(i.e 1 returns 'one')
+    function numAsWord(num) {
+        switch (num) {
+            case 1:
+                return "one";
+            case 2:
+                return "two";
+            case 3:
+                return "three";
+            case 4:
+                return "four";
+            case 5:
+                return "five";
+            case 6:
+                return "six";
+            case 7:
+                return "seven";
+            case 8:
+                return "eight";
+            case 9:
+                return "nine";
+            case 10:
+                return "ten";
+            default:
+                return false;
+        }
+    }
+
+var randoNum = Math.floor(Math.random() * 10) + 1;
+    console.log(numAsWord(randoNum));
+
 </script>
 </body>
 </html>
