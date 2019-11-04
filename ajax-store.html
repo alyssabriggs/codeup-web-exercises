@@ -2,13 +2,15 @@
 <html>
 <head>
     <title>Online Store</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link type="text/css" href="https://getbootstrap.com/1.0.0/assets/css/bootstrap-1.0.0.min.css">
 </head>
 <body>
 
-<h1>My Tool Store</h1>
-
-<table id="products">
-    <thead>
+<h1 class = "text-center">My Tool Store</h1>
+<div id="container">
+<table id="products" class="table table-striped table-bordered">
+    <thead class="thead-dark text-center">
         <tr>
             <th>Title</th>
             <th>Quantity</th>
@@ -18,18 +20,63 @@
     </thead>
     <tbody id="insertProducts"></tbody>
 </table>
-
+</div>
+<button type="button" id="refresh" class="btn btn-success">Refresh</button>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <script>
 (function() {
     "use strict";
     // TODO: Create an ajax GET request for /data/inventory.json
 
+
+
     // TODO: Take the data from inventory.json and append it to the products table
     //       HINT: Your data should come back as a JSON object; use console.log() to inspect
     //             its contents and fields
     //       HINT: You will want to target #insertProducts for your new HTML elements
+function generateTable() {
+    var inventory = $.ajax("data/inventory.json");
+    inventory.done(function (data) {
+        console.log(data);
+
+        $.each(data, function (index, item) {
+
+            var content = "<tr class='text-center'>";
+            content += "<td>";
+            content += item.title;
+            content += "</td>";
+            content += "<td>";
+            content += item.quantity;
+            content += "</td>";
+            content += "<td>";
+            content += item.price;
+            content += "</td>";
+            content += "<td>";
+            content += item.categories;
+            content += "</td>";
+            content += "</tr>";
+            console.log(content);
+
+            $('#insertProducts').append(content);
+
+        });
+    });
+    inventory.fail(function (data) {
+        console.log("Something went wrong.")
+    });
+}
+
+generateTable();
+
+    $('#refresh').click(function(){
+        //reset my html to empty string
+        $('#insertProducts').html("");
+        //call function to append new book list
+        generateTable();
+    });
+
 })();
 </script>
 
