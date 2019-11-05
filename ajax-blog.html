@@ -8,15 +8,20 @@
         body {
             background-color: cornsilk;
         }
+        .categories {
+            font-size: 10px;
+        }
     </style>
 </head>
 <body>
-<div id="posts">
-    <div class="jumbotron jumbotron-fluid bg-info text-white">
-        <div class="container">
-            <h1 class="display-4">Welcome to my Blog!</h1>
-        </div>
+<div class="jumbotron jumbotron-fluid bg-info text-white">
+    <div class="container">
+        <h1 class="display-4">Welcome to my Blog!</h1>
     </div>
+</div>
+<div class="container">
+<div id="posts">
+</div>
 </div>
 <script src="js/jquery-2.2.4.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
@@ -33,15 +38,16 @@
                 var content = "<h2>";
                 content += entry.title;
                 content += "</h2>";
-                content += "<p>";
-                content += entry.content;
-                content += "</p>";
-                content += "<p class='text-muted text-center'>";
-                content += entry.categories;
-                content += "</p>";
-                content += "<p class='text-muted text-center'>";
+                content += "<p class='text-muted'>";
                 content += entry.date;
                 content += "</p>";
+                content += "<p>";
+                content += entry.content;
+                content += "<br>";
+                content += "<span class='text-muted categories'>";
+                content += entry.categories;
+                content += "</span></p><br>";
+
 
                 console.log(content);
 
