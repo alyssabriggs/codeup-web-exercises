@@ -376,6 +376,20 @@
 var randoNum = Math.floor(Math.random() * 10) + 1;
     console.log(numAsWord(randoNum));
 
+
+    //Write a JAvaScript function that will return "You're Welcome", but ony when passed a JavaScript object with a property of gratitude that has the value of "Thank you"
+
+    var myObject = {
+        gratitude: 'Thank you'
+    };
+    function sayWelcome(obj){
+        if (obj.gratitude === "Thank you"){
+            return "You're welcome";
+        }
+    }
+
+    console.log(sayWelcome(myObject));
+
 </script>
 </body>
 </html>
