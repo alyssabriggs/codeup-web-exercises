@@ -11,16 +11,61 @@
         .categories {
             font-size: 10px;
         }
+        h2:hover {
+            text-decoration: underline;
+        }
+        a {
+            text-decoration: none;
+            color: black;
+            padding: 5px;
+        }
     </style>
 </head>
-<body>
+<div>
 <div class="jumbotron jumbotron-fluid bg-info text-white">
     <div class="container">
         <h1 class="display-4">Welcome to my Blog!</h1>
     </div>
 </div>
+    <div class="row">
+        <nav class="col-md-2 d-md-flex sidebar justify-content-center">
+            <div class="sidebar-sticky">
+                <ul class="nav flex-column">
+                    <a href="#post-1">
+                        <li class="nav-item">First</li>
+                    </a>
+                    <a href="#post-2">
+                        <li class="nav-item">Second</li>
+                    </a>
+                    <a href="#post-3">
+                        <li class="nav-item">Third</li>
+                    </a>
+                    <a href="#post-4">
+                        <li class="nav-item">Fourth</li>
+                    </a>
+                    <a href="#post-5">
+                        <li class="nav-item">Fifth</li>
+                    </a>
+                    <a href="#post-6">
+                        <li class="nav-item">Sixth</li>
+                    </a>
+                    <a href="#post-7">
+                        <li class="nav-item">Seventh</li>
+                    </a>
+                    <a href="#post-8">
+                        <li class="nav-item">Eigth</li>
+                    </a>
+                    <a href="#post-9">
+                        <li class="nav-item">Ninth</li>
+                    </a>
+                </ul>
+            </div>
+        </nav>
 <div class="container">
+<div class="d-md-flex">
 <div id="posts">
+</div>
+</div>
 </div>
 </div>
 <script src="js/jquery-2.2.4.js"></script>
@@ -35,7 +80,7 @@
 
             $.each(data, function (index, entry) {
 
-                var content = "<h2>";
+                var content = "<h2 id='post-" + entry.number + "'>";
                 content += entry.title;
                 content += "</h2>";
                 content += "<p class='text-muted'>";
@@ -49,14 +94,14 @@
                 content += "</span></p><br>";
 
 
-                console.log(content);
 
+                console.log(content);
                 $('#posts').append(content);
             })
-        })
+        });
         blogEntries.fail(function (data) {
             console.log("Something went wrong.");
-        })
+        });
     }
 
     generateBlog();

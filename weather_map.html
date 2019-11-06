@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather Map</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.5.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.5.0/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        .first-card-extra {
+            font-size: 12px;
+        }
+        .second-card-extra {
+            font-size: 12px;
+        }
+        .third-card-extra {
+            font-size: 12px;
+        }
+        .card-group {
+            margin-top: 20px;
+        }
+        .card {
+            background-color: #69bec8;
+        }
+        .location-field {
+            padding: 20px;
+        }
+        #map {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        .navbar {
+            background-color: #343332;
+        }
+        .navbar-toggler-icon {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<script src="js/jquery-2.2.4.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="js/keys.js"></script>
+
+
+<nav class="navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand text-white" href="#">Navbar w/ text</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+            aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link text-white" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="#">Features</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="#">Pricing</a>
+            </li>
+        </ul>
+        <span class="navbar-text text-white">
+      Navbar text with an inline element
+    </span>
+    </div>
+</nav>
+<div class="container">
+<div class="card-group">
+    <div class="card">
+        <img class="card-img-top first-card-img" alt="...">
+        <div class="card-body">
+            <h5 class="card-title first-card-summary text-center"></h5>
+            <p class="card-text first-card-extra text-center"></p>
+            <p class="card-text"><small class="text-muted"></small></p>
+        </div>
+    </div>
+    <div class="card">
+        <img class="card-img-top second-card-img" alt="...">
+        <div class="card-body">
+            <h5 class="card-title second-card-summary text-center"></h5>
+            <p class="card-text second-card-extra text-center"></p>
+            <p class="card-text"><small class="text-muted"></small></p>
+        </div>
+    </div>
+    <div class="card">
+        <img class="card-img-top third-card-img" alt="...">
+        <div class="card-body">
+            <h5 class="card-title third-card-summary text-center"></h5>
+            <p class="card-text third-card-extra text-center"></p>
+            <p class="card-text"><small class="text-muted"></small></p>
+        </div>
+    </div>
+</div>
+<!--<div class="d-flex justify-content-center location-field">-->
+<!--<input type="text" id="lat" placeholder="Latitude"> <input type="text" id="long" placeholder="Longitude">-->
+<!--<button id="submit-location">Submit Location</button>-->
+<!--</div>-->
+    <div id='map' style='width: 100%; height: 300px;'></div>
+    <pre id='coordinates' class='coordinates'></pre>
+    <script>
+        mapboxgl.accessToken = 'pk.eyJ1IjoiYWx5c3NhYnJpZ2dzIiwiYSI6ImNrMjJza2d4NjF5MTQzbm11ZHRybG85cmkifQ.MEsi7PM4fBC7CvLzeDaMSw';
+        var coordinates = document.getElementById('coordinates');
+        var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/dark-v9',
+            center: [-98.4936, 29.4241],
+            zoom: 10
+        });
+
+        var marker = new mapboxgl.Marker({
+            draggable: true
+        })
+            .setLngLat([-98.4936, 29.4241])
+            .addTo(map);
+
+        function onDragEnd() {
+            var lngLat = marker.getLngLat();
+            coordinates.style.display = 'block';
+            coordinates.innerHTML = 'Longitude: ' + lngLat.lng + '<br />Latitude: ' + lngLat.lat;
+        }
+
+        marker.on('dragend', onDragEnd);
+    </script>
+</div>
+<script>
+$(document).ready(function () {
+
+
+    function firstWeatherCard() {
+        var weather = $.get("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + darkSky +
+        "/29.4241,-98.4936").done(function(data) {
+        console.log(data);
+        $('.first-card-summary').append(data.currently.summary);
+        $('.first-card-extra').append("<strong>Max:</strong> " +
+            parseInt(data.daily.data[0].temperatureHigh) + "&deg;" +  "<br><strong>Min:</strong> " +
+            parseInt(data.daily.data[0].temperatureLow) + "&deg;" + "<br>" + "<strong>Humidity:</strong> " +
+            parseInt(data.daily.data[0].humidity * 100) + "%");
+            var first = [
+                            {
+                                summary: 'clear-day',
+                                image: 'img/clear-day.webp'
+                            },{
+                                summary: 'clear-night',
+                                image: 'img/clear-night.webp'
+                            },{
+                                summary: 'rain',
+                                image: 'img/rain.webp'
+                            },{
+                                summary: 'snow',
+                                image: 'img/snow.webp'
+                            },{
+                                summary: 'sleet',
+                                image: 'img/sleet.webp'
+                            },{
+                                summary: 'wind',
+                                image: 'img/windy.webp'
+                            },{
+                                summary: 'fog',
+                                image: 'img/fog.webp'
+                            },{
+                                summary: 'cloudy',
+                                image: 'img/cloudy.webp'
+                            },{
+                                summary: 'partly-cloudy-day',
+                                image: 'img/partly-cloudy-day.webp'
+                            },{
+                                summary: 'partly-cloudy-night',
+                                image: 'img/cloudy-night.webp'
+                            },
+                        ];
+            first.forEach(function (type) {
+                if(data.currently.icon === type.summary){
+                    $('.first-card-img').attr('src', type.image);
+                }
+            });
+
+    });
+    }
+
+    firstWeatherCard();
+
+    function secondWeatherCard() {
+        var weather = $.get("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + darkSky +
+            "/29.4241,-98.4936").done(function(dataSecond) {
+            console.log(dataSecond);
+            $('.second-card-summary').append(dataSecond.daily.data[1].summary);
+            $('.second-card-extra').append("<strong>Max:</strong> " +
+                parseInt(dataSecond.daily.data[1].temperatureHigh) + "&deg;" +  "<br><strong>Min:</strong> " +
+                parseInt(dataSecond.daily.data[1].temperatureLow) + "&deg;" + "<br>" + "<strong>Humidity:</strong> " +
+                parseInt(dataSecond.daily.data[1].humidity * 100) + "%");
+            var second = [
+                {
+                    summary: 'clear-day',
+                    image: 'img/clear-day.webp'
+                },{
+                    summary: 'clear-night',
+                    image: 'img/clear-night.webp'
+                },{
+                    summary: 'rain',
+                    image: 'img/rain.webp'
+                },{
+                    summary: 'snow',
+                    image: 'img/snow.webp'
+                },{
+                    summary: 'sleet',
+                    image: 'img/sleet.webp'
+                },{
+                    summary: 'wind',
+                    image: 'img/windy.webp'
+                },{
+                    summary: 'fog',
+                    image: 'img/fog.webp'
+                },{
+                    summary: 'cloudy',
+                    image: 'img/cloudy.webp'
+                },{
+                    summary: 'partly-cloudy-day',
+                    image: 'img/partly-cloudy-day.webp'
+                },{
+                    summary: 'partly-cloudy-night',
+                    image: 'img/cloudy-night.webp'
+                },
+            ];
+            second.forEach(function (type) {
+                if(dataSecond.daily.data[1].icon === type.summary){
+                    $('.second-card-img').attr('src', type.image);
+                }
+            });
+
+        });
+    }
+
+    secondWeatherCard();
+
+    function thirdWeatherCard() {
+        var weather = $.get("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + darkSky +
+            "/29.4241,-98.4936").done(function(dataThird) {
+            console.log(dataThird);
+            $('.third-card-summary').append(dataThird.daily.data[2].summary);
+            $('.third-card-extra').append("<strong>Max:</strong> " +
+                parseInt(dataThird.daily.data[2].temperatureHigh) + "&deg;" +  "<br><strong>Min:</strong> " +
+                parseInt(dataThird.daily.data[2].temperatureLow) + "&deg;" + "<br>" + "<strong>Humidity:</strong> " +
+            parseInt(dataThird.daily.data[2].humidity * 100) + "%");
+            var third = [
+                {
+                    summary: 'clear-day',
+                    image: 'img/clear-day.webp'
+                },{
+                    summary: 'clear-night',
+                    image: 'img/clear-night.webp'
+                },{
+                    summary: 'rain',
+                    image: 'img/rain.webp'
+                },{
+                    summary: 'snow',
+                    image: 'img/snow.webp'
+                },{
+                    summary: 'sleet',
+                    image: 'img/sleet.webp'
+                },{
+                    summary: 'wind',
+                    image: 'img/windy.webp'
+                },{
+                    summary: 'fog',
+                    image: 'img/fog.webp'
+                },{
+                    summary: 'cloudy',
+                    image: 'img/cloudy.webp'
+                },{
+                    summary: 'partly-cloudy-day',
+                    image: 'img/partly-cloudy-day.webp'
+                },{
+                    summary: 'partly-cloudy-night',
+                    image: 'img/cloudy-night.webp'
+                },
+            ];
+            third.forEach(function (type) {
+                if(dataThird.daily.data[2].icon === type.summary){
+                    $('.third-card-img').attr('src', type.image);
+                }
+            });
+
+        });
+    }
+
+    thirdWeatherCard();
+})
+</script>
+</body>
+</html>
