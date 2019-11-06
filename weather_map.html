@@ -126,37 +126,50 @@
         .addTo(map);
 
 
+        function changeTheURL(latitude, longitude){
+            var weather = $.get("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + darkSky +
+                "/" + latitude + "," + longitude);
+            return weather;
+        }
+        changeTheURL();
+
         function onDragEnd() {
             var lngLat = marker.getLngLat();
             coordinates.style.display = 'block';
-            coordinates.innerHTML = 'Longitude: ' + lngLat.lng + '<br />Latitude: ' + lngLat.lat;
-            var weather = $.get("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + darkSky +
-                "/" + lngLat.lat + "," + lngLat.lng);
-            console.log(weather.done());
-            firstWeatherCard(weather);
-            secondWeatherCard(weather);
-            thirdWeatherCard(weather);
+            coordinates.innerHTML = 'Longitude: ' + lngLat.lng + '  Latitude: ' + lngLat.lat;
+            var drag = changeTheURL(lngLat.lat, lngLat.lng);
+            firstWeatherCard(drag);
+            secondWeatherCard(drag);
+            thirdWeatherCard(drag);
             console.log(lngLat);
         }
 
-
+        marker.on('dragend', onDragEnd);
         var lngLat = marker.getLngLat();
 
 
 
-         $('#submit-address').click(function () {
-            var input = $('#address').val();
-            geocode(input, mapboxToken).then(function(result) {
-            console.log(result);
-            map.setCenter(result);
-            map.setZoom(20);
-
-            // marker.setLngLat(result)
-
-                marker.setLngLat(result)
-                // .addTo(map)
+            $('#submit-address').click(function () {
+                var input = $('#address').val();
+                geocode(input, mapboxToken).then(function (result) {
+                    var longitude = result[0];
+                    var latitude = result[1];
+                    var search = changeTheURL(latitude, longitude);
+                    firstWeatherCard(search);
+                    secondWeatherCard(search);
+                    thirdWeatherCard(search);
+                    console.log(result);
+                    map.setCenter(result);
+                    map.setZoom(20);
+                    marker.setLngLat(result);
+                });
             });
-         });
+
+            changeTheURL();
+
+
+
+
 
 
         var weather = $.get("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + darkSky +
