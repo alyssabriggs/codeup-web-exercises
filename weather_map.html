@@ -7,6 +7,9 @@
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.5.0/mapbox-gl.js'></script>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.5.0/mapbox-gl.css' rel='stylesheet' />
     <style>
+        body {
+            background-color: #FDEDD0;
+        }
         .first-card-extra {
             font-size: 12px;
         }
@@ -20,17 +23,14 @@
             margin-top: 20px;
         }
         .card {
-            background-color: #69bec8;
-        }
-        .location-field {
-            padding: 20px;
+            background-color: #47B8C9;
         }
         #map {
             margin-top: 20px;
             margin-bottom: 20px;
         }
         .navbar {
-            background-color: #343332;
+            background-color: #014E59;
         }
         .navbar-toggler-icon {
             color: white;
@@ -49,64 +49,69 @@
 <script src="js/keys.js"></script>
 
 
-<nav class="navbar navbar-expand-lg navbar-light">
-    <a class="navbar-brand text-white" href="#">Navbar w/ text</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
-            aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar navbar-expand-lg navbar-light sticky-top">
+    <a class="navbar-brand text-white" href="#">Weather</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarText">
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
                 <a class="nav-link text-white" href="#">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white" href="#">Features</a>
+                <a class="nav-link text-white" href="#">Link</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white" href="#">Pricing</a>
+                <a class="nav-link text-white" href="#">Link</a>
             </li>
         </ul>
-        <span class="navbar-text text-white">
-      Navbar text with an inline element
-    </span>
+        <form class="form-inline my-2 my-lg-0">
+            <input id="address" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button type="button" id="submit-address" class="btn btn-outline-info my-2 my-sm-0 text-white">Search
+            </button>
+        </form>
     </div>
 </nav>
 <div class="container">
 <div class="card-group">
     <div class="card">
-        <img class="card-img-top first-card-img" alt="...">
+        <div class="card-header insert-date"></div>
+        <img class="card-img-top first-card-img img-fluid" alt="...">
         <div class="card-body">
             <h5 class="card-title first-card-summary text-center"></h5>
             <p class="card-text first-card-extra text-center"></p>
-            <p class="card-text"><small class="text-muted"></small></p>
         </div>
+            <div class="card-footer text-center">
+                <small class="text-white ">Last updated 3 minutes ago</small>
+            </div>
     </div>
     <div class="card">
-        <img class="card-img-top second-card-img" alt="...">
+        <div class="card-header insert-date"></div>
+        <img class="card-img-top second-card-img " alt="...">
         <div class="card-body">
             <h5 class="card-title second-card-summary text-center"></h5>
             <p class="card-text second-card-extra text-center"></p>
-            <p class="card-text"><small class="text-muted"></small></p>
         </div>
+            <div class="card-footer text-center">
+                <small class="text-white ">Last updated 3 minutes ago</small>
+            </div>
     </div>
     <div class="card">
-        <img class="card-img-top third-card-img" alt="...">
+        <div class="card-header insert-date"></div>
+        <img class="card-img-top third-card-img " alt="...">
         <div class="card-body">
             <h5 class="card-title third-card-summary text-center"></h5>
             <p class="card-text third-card-extra text-center"></p>
-            <p class="card-text"><small class="text-muted"></small></p>
         </div>
+            <div class="card-footer text-center">
+                <small class="text-white">Last updated 3 minutes ago</small>
+            </div>
     </div>
 </div>
-<!--<div class="d-flex justify-content-center location-field">-->
-<!--<input type="text" id="lat" placeholder="Latitude"> <input type="text" id="long" placeholder="Longitude">-->
-<!--<button id="submit-location">Submit Location</button>-->
-<!--</div>-->
     <div id='map' style='width: 100%; height: 300px;'></div>
-    <pre id='coordinates' class='coordinates'></pre>
-    <input type="text" id="address" placeholder="Search">
-    <button type="button" id="submit-address">Search</button>
+    <pre id='coordinates' class='coordinates text-muted'></pre>
 </div>
 <script>
     $(document).ready(function () {
@@ -148,7 +153,6 @@
         var lngLat = marker.getLngLat();
 
 
-
             $('#submit-address').click(function () {
                 var input = $('#address').val();
                 geocode(input, mapboxToken).then(function (result) {
@@ -160,70 +164,67 @@
                     thirdWeatherCard(search);
                     console.log(result);
                     map.setCenter(result);
-                    map.setZoom(20);
+                    map.setZoom(10);
                     marker.setLngLat(result);
                 });
             });
-
-            changeTheURL();
-
-
-
-
-
 
         var weather = $.get("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + darkSky +
             "/" + lngLat.lat + "," + lngLat.lng);
         console.log(weather.done());
 
+        var dateObj = new Date((573080232 * 1000) + 86400000);
+        for (var i = 0; i < dateObj.length; i++){
+            $('.insert-date').append("Today's date: " + dateObj[i] + "");
+        }
+        console.log(dateObj);
+
+        var icons = [
+            {
+                summary: 'clear-day',
+                image: 'img/clear-day.webp'
+            },{
+                summary: 'clear-night',
+                image: 'img/clear-night.webp'
+            },{
+                summary: 'rain',
+                image: 'img/rain.webp'
+            },{
+                summary: 'snow',
+                image: 'img/snow.webp'
+            },{
+                summary: 'sleet',
+                image: 'img/sleet.webp'
+            },{
+                summary: 'wind',
+                image: 'img/windy.webp'
+            },{
+                summary: 'fog',
+                image: 'img/fog.webp'
+            },{
+                summary: 'cloudy',
+                image: 'img/cloudy.webp'
+            },{
+                summary: 'partly-cloudy-day',
+                image: 'img/partly-cloudy-day.webp'
+            },{
+                summary: 'partly-cloudy-night',
+                image: 'img/cloudy-night.webp'
+            },
+        ];
+
     function firstWeatherCard(weather) {
        weather.done(function(data) {
-        $('.first-card-summary').html("");
-        $('.first-card-extra').html("");
-        $('.first-card-summary').append(data.currently.summary);
-        $('.first-card-extra').append("<strong>Max:</strong> " +
+        $('.first-card-summary').html("").append(data.currently.summary);
+        $('.first-card-extra').html("").append("<strong>Max:</strong> " +
             parseInt(data.daily.data[0].temperatureHigh) + "&deg;" +  "<br><strong>Min:</strong> " +
             parseInt(data.daily.data[0].temperatureLow) + "&deg;" + "<br>" + "<strong>Humidity:</strong> " +
             parseInt(data.daily.data[0].humidity * 100) + "%");
-            var first = [
-                            {
-                                summary: 'clear-day',
-                                image: 'img/clear-day.webp'
-                            },{
-                                summary: 'clear-night',
-                                image: 'img/clear-night.webp'
-                            },{
-                                summary: 'rain',
-                                image: 'img/rain.webp'
-                            },{
-                                summary: 'snow',
-                                image: 'img/snow.webp'
-                            },{
-                                summary: 'sleet',
-                                image: 'img/sleet.webp'
-                            },{
-                                summary: 'wind',
-                                image: 'img/windy.webp'
-                            },{
-                                summary: 'fog',
-                                image: 'img/fog.webp'
-                            },{
-                                summary: 'cloudy',
-                                image: 'img/cloudy.webp'
-                            },{
-                                summary: 'partly-cloudy-day',
-                                image: 'img/partly-cloudy-day.webp'
-                            },{
-                                summary: 'partly-cloudy-night',
-                                image: 'img/cloudy-night.webp'
-                            },
-                        ];
-            first.forEach(function (type) {
+            icons.forEach(function (type) {
                 if(data.currently.icon === type.summary){
                     $('.first-card-img').attr('src', type.image);
                 }
             });
-
     });
     }
 
@@ -231,52 +232,16 @@
 
     function secondWeatherCard(weather) {
         weather.done(function(dataSecond) {
-            $('.second-card-summary').html("");
-            $('.second-card-extra').html("");
-            $('.second-card-summary').append(dataSecond.daily.data[1].summary);
-            $('.second-card-extra').append("<strong>Max:</strong> " +
+            $('.second-card-summary').html("").append(dataSecond.daily.data[1].summary);
+            $('.second-card-extra').html("").append("<strong>Max:</strong> " +
                 parseInt(dataSecond.daily.data[1].temperatureHigh) + "&deg;" +  "<br><strong>Min:</strong> " +
                 parseInt(dataSecond.daily.data[1].temperatureLow) + "&deg;" + "<br>" + "<strong>Humidity:</strong> " +
                 parseInt(dataSecond.daily.data[1].humidity * 100) + "%");
-            var second = [
-                {
-                    summary: 'clear-day',
-                    image: 'img/clear-day.webp'
-                },{
-                    summary: 'clear-night',
-                    image: 'img/clear-night.webp'
-                },{
-                    summary: 'rain',
-                    image: 'img/rain.webp'
-                },{
-                    summary: 'snow',
-                    image: 'img/snow.webp'
-                },{
-                    summary: 'sleet',
-                    image: 'img/sleet.webp'
-                },{
-                    summary: 'wind',
-                    image: 'img/windy.webp'
-                },{
-                    summary: 'fog',
-                    image: 'img/fog.webp'
-                },{
-                    summary: 'cloudy',
-                    image: 'img/cloudy.webp'
-                },{
-                    summary: 'partly-cloudy-day',
-                    image: 'img/partly-cloudy-day.webp'
-                },{
-                    summary: 'partly-cloudy-night',
-                    image: 'img/cloudy-night.webp'
-                },
-            ];
-            second.forEach(function (type) {
+            icons.forEach(function (type) {
                 if(dataSecond.daily.data[1].icon === type.summary){
                     $('.second-card-img').attr('src', type.image);
                 }
             });
-
         });
     }
 
@@ -284,52 +249,16 @@
 
     function thirdWeatherCard(weather) {
      weather.done(function(dataThird) {
-         $('.third-card-summary').html("");
-         $('.third-card-extra').html("");
-            $('.third-card-summary').append(dataThird.daily.data[2].summary);
-            $('.third-card-extra').append("<strong>Max:</strong> " +
+            $('.third-card-summary').html("").append(dataThird.daily.data[2].summary);
+            $('.third-card-extra').html("").append("<strong>Max:</strong> " +
                 parseInt(dataThird.daily.data[2].temperatureHigh) + "&deg;" +  "<br><strong>Min:</strong> " +
                 parseInt(dataThird.daily.data[2].temperatureLow) + "&deg;" + "<br>" + "<strong>Humidity:</strong> " +
             parseInt(dataThird.daily.data[2].humidity * 100) + "%");
-            var third = [
-                {
-                    summary: 'clear-day',
-                    image: 'img/clear-day.webp'
-                },{
-                    summary: 'clear-night',
-                    image: 'img/clear-night.webp'
-                },{
-                    summary: 'rain',
-                    image: 'img/rain.webp'
-                },{
-                    summary: 'snow',
-                    image: 'img/snow.webp'
-                },{
-                    summary: 'sleet',
-                    image: 'img/sleet.webp'
-                },{
-                    summary: 'wind',
-                    image: 'img/windy.webp'
-                },{
-                    summary: 'fog',
-                    image: 'img/fog.webp'
-                },{
-                    summary: 'cloudy',
-                    image: 'img/cloudy.webp'
-                },{
-                    summary: 'partly-cloudy-day',
-                    image: 'img/partly-cloudy-day.webp'
-                },{
-                    summary: 'partly-cloudy-night',
-                    image: 'img/cloudy-night.webp'
-                },
-            ];
-            third.forEach(function (type) {
+            icons.forEach(function (type) {
                 if(dataThird.daily.data[2].icon === type.summary){
                     $('.third-card-img').attr('src', type.image);
                 }
             });
-
         });
     }
 
