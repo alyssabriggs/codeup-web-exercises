@@ -42,6 +42,10 @@
 <script src="js/jquery-2.2.4.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="js/mapbox-geocoder-utils.js"></script>
+
+
+
 <script src="js/keys.js"></script>
 
 
@@ -101,39 +105,68 @@
 <!--</div>-->
     <div id='map' style='width: 100%; height: 300px;'></div>
     <pre id='coordinates' class='coordinates'></pre>
-    <script>
-        mapboxgl.accessToken = 'pk.eyJ1IjoiYWx5c3NhYnJpZ2dzIiwiYSI6ImNrMjJza2d4NjF5MTQzbm11ZHRybG85cmkifQ.MEsi7PM4fBC7CvLzeDaMSw';
-        var coordinates = document.getElementById('coordinates');
-        var map = new mapboxgl.Map({
-            container: 'map',
-            style: 'mapbox://styles/mapbox/dark-v9',
-            center: [-98.4936, 29.4241],
-            zoom: 10
-        });
+    <input type="text" id="address" placeholder="Search">
+    <button type="button" id="submit-address">Search</button>
+</div>
+<script>
+    $(document).ready(function () {
+    mapboxgl.accessToken = mapboxToken;
+    var coordinates = document.getElementById('coordinates');
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/dark-v9',
+        center: [-98.4936, 29.4241],
+        zoom: 10
+    });
 
-        var marker = new mapboxgl.Marker({
-            draggable: true
-        })
-            .setLngLat([-98.4936, 29.4241])
-            .addTo(map);
+    var marker = new mapboxgl.Marker({
+        draggable: true
+    })
+        .setLngLat([-98.4936, 29.4241])
+        .addTo(map);
+
 
         function onDragEnd() {
             var lngLat = marker.getLngLat();
             coordinates.style.display = 'block';
             coordinates.innerHTML = 'Longitude: ' + lngLat.lng + '<br />Latitude: ' + lngLat.lat;
+            var weather = $.get("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + darkSky +
+                "/" + lngLat.lat + "," + lngLat.lng);
+            console.log(weather.done());
+            firstWeatherCard(weather);
+            secondWeatherCard(weather);
+            thirdWeatherCard(weather);
+            console.log(lngLat);
         }
 
-        marker.on('dragend', onDragEnd);
-    </script>
-</div>
-<script>
-$(document).ready(function () {
+
+        var lngLat = marker.getLngLat();
 
 
-    function firstWeatherCard() {
+
+         $('#submit-address').click(function () {
+            var input = $('#address').val();
+            geocode(input, mapboxToken).then(function(result) {
+            console.log(result);
+            map.setCenter(result);
+            map.setZoom(20);
+
+            // marker.setLngLat(result)
+
+                marker.setLngLat(result)
+                // .addTo(map)
+            });
+         });
+
+
         var weather = $.get("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + darkSky +
-        "/29.4241,-98.4936").done(function(data) {
-        console.log(data);
+            "/" + lngLat.lat + "," + lngLat.lng);
+        console.log(weather.done());
+
+    function firstWeatherCard(weather) {
+       weather.done(function(data) {
+        $('.first-card-summary').html("");
+        $('.first-card-extra').html("");
         $('.first-card-summary').append(data.currently.summary);
         $('.first-card-extra').append("<strong>Max:</strong> " +
             parseInt(data.daily.data[0].temperatureHigh) + "&deg;" +  "<br><strong>Min:</strong> " +
@@ -181,12 +214,12 @@ $(document).ready(function () {
     });
     }
 
-    firstWeatherCard();
+    firstWeatherCard(weather);
 
-    function secondWeatherCard() {
-        var weather = $.get("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + darkSky +
-            "/29.4241,-98.4936").done(function(dataSecond) {
-            console.log(dataSecond);
+    function secondWeatherCard(weather) {
+        weather.done(function(dataSecond) {
+            $('.second-card-summary').html("");
+            $('.second-card-extra').html("");
             $('.second-card-summary').append(dataSecond.daily.data[1].summary);
             $('.second-card-extra').append("<strong>Max:</strong> " +
                 parseInt(dataSecond.daily.data[1].temperatureHigh) + "&deg;" +  "<br><strong>Min:</strong> " +
@@ -234,12 +267,12 @@ $(document).ready(function () {
         });
     }
 
-    secondWeatherCard();
+    secondWeatherCard(weather);
 
-    function thirdWeatherCard() {
-        var weather = $.get("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + darkSky +
-            "/29.4241,-98.4936").done(function(dataThird) {
-            console.log(dataThird);
+    function thirdWeatherCard(weather) {
+     weather.done(function(dataThird) {
+         $('.third-card-summary').html("");
+         $('.third-card-extra').html("");
             $('.third-card-summary').append(dataThird.daily.data[2].summary);
             $('.third-card-extra').append("<strong>Max:</strong> " +
                 parseInt(dataThird.daily.data[2].temperatureHigh) + "&deg;" +  "<br><strong>Min:</strong> " +
@@ -287,7 +320,9 @@ $(document).ready(function () {
         });
     }
 
-    thirdWeatherCard();
+    thirdWeatherCard(weather);
+
+
 })
 </script>
 </body>

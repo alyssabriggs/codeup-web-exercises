@@ -94,17 +94,17 @@ var marker = new mapboxgl.Marker(markerOptions)
 
 // TODO TOGETHER: Using the Geocoder helper function, log the coordinates of Codeup and recenter the map to focus on Codeup. Comment out previous map code.
 
-// geocode("20855 Stone Oak Parkway, San Antonio, TX 78255", mapboxToken).then(function(result) {
-//     console.log(result);
-//     map.setCenter(result);
-//     map.setZoom(20);
-//
-//     // marker.setLngLat(result)
-//
-//     new mapboxgl.Marker()
-//         .setLngLat(result)
-//         .addTo(map)
-// });
+geocode("20855 Stone Oak Parkway, San Antonio, TX 78255", mapboxToken).then(function(result) {
+    console.log(result);
+    map.setCenter(result);
+    map.setZoom(20);
+
+    // marker.setLngLat(result)
+
+    new mapboxgl.Marker()
+        .setLngLat(result)
+        .addTo(map)
+});
 
 //TODO: Using the geocode method above, add a marker at Codeup to the map
 
