@@ -35,10 +35,7 @@
         .navbar-toggler-icon {
             color: white;
         }
-        /*.card-img-top {*/
-        /*    width: 208px;*/
-        /*    height: 208px;*/
-        /*}*/
+
     </style>
 </head>
 <body>
@@ -212,34 +209,34 @@
         var icons = [
             {
                 summary: 'clear-day',
-                image: 'img/clear-day.webp'
+                image: 'icon/clear-day.webp'
             },{
                 summary: 'clear-night',
-                image: 'img/clear-night.webp'
+                image: 'icon/clear-night.webp'
             },{
                 summary: 'rain',
-                image: 'img/rain.webp'
+                image: 'icon/rain.webp'
             },{
                 summary: 'snow',
-                image: 'img/snow.webp'
+                image: 'icon/snow.webp'
             },{
                 summary: 'sleet',
-                image: 'img/sleet.webp'
+                image: 'icon/sleet.webp'
             },{
                 summary: 'wind',
-                image: 'img/windy.webp'
+                image: 'icon/windy.webp'
             },{
                 summary: 'fog',
-                image: 'img/fog1.webp'
+                image: 'icon/fog1.webp'
             },{
                 summary: 'cloudy',
-                image: 'img/cloudy1.webp'
+                image: 'icon/cloudy1.webp'
             },{
                 summary: 'partly-cloudy-day',
-                image: 'img/partly-cloudy-day.webp'
+                image: 'icon/partly-cloudy-day.webp'
             },{
                 summary: 'partly-cloudy-night',
-                image: 'img/cloudy-night.webp'
+                image: 'icon/cloudy-night.webp'
             },
         ];
 
@@ -256,17 +253,12 @@
                 }
             });
            if (data.currently.icon === "clear-day"){
-               $('.sun').attr('src', 'img/weather-main1.png')
+               $('.sun').attr('src', 'icon/weather-main1.png')
            } else {
-               $('.sun').attr('src', 'img/weather-main.png');
+               $('.sun').attr('src', 'icon/weather-main.png');
            }
     });
     }
-
-    // function weatherIcon() {
-    //
-    // };
-    // weatherIcon();
 
     firstWeatherCard(weather);
 
@@ -336,7 +328,7 @@
         });
 
         function rainingMen() {
-            $('body').css('background-image', 'url(' + "img/raining-background.webp" + ')').css('background-repeat',
+            $('body').css('background-image', 'url(' + "icon/raining-background.webp" + ')').css('background-repeat',
                 'repeat');
 
             var audio = new Audio('img/raining-men.mp3');
