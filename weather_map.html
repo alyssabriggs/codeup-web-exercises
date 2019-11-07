@@ -55,7 +55,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-light sticky-top">
     <span class="navbar-brand text-white" href="#">Weather
-        <img src="img/weather-main.png" alt="weather-main" class="img-fluid">
+        <img class="img-fluid sun">
     </span>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -255,8 +255,18 @@
                     $('.first-card-img').attr('src', type.image);
                 }
             });
+           if (data.currently.icon === "clear-day"){
+               $('.sun').attr('src', 'img/weather-main1.png')
+           } else {
+               $('.sun').attr('src', 'img/weather-main.png');
+           }
     });
     }
+
+    // function weatherIcon() {
+    //
+    // };
+    // weatherIcon();
 
     firstWeatherCard(weather);
 
