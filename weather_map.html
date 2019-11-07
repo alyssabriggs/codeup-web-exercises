@@ -19,7 +19,7 @@
         .third-card-extra {
             font-size: 12px;
         }
-        .card-group {
+        .card-deck {
             margin-top: 20px;
         }
         .card {
@@ -35,6 +35,10 @@
         .navbar-toggler-icon {
             color: white;
         }
+        /*.card-img-top {*/
+        /*    width: 208px;*/
+        /*    height: 208px;*/
+        /*}*/
     </style>
 </head>
 <body>
@@ -50,7 +54,9 @@
 
 
 <nav class="navbar navbar-expand-lg navbar-light sticky-top">
-    <a class="navbar-brand text-white" href="#">Weather</a>
+    <span class="navbar-brand text-white" href="#">Weather
+        <img src="img/weather-main.png" alt="weather-main" class="img-fluid">
+    </span>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -58,13 +64,6 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link text-white" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-white" href="#">Link</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-white" href="#">Link</a>
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
@@ -74,39 +73,39 @@
         </form>
     </div>
 </nav>
-<div class="container">
-<div class="card-group">
+<div class="container card-container">
+<div class="card-deck text-center text-white">
     <div class="card">
         <div class="card-header insert-date"></div>
-        <img class="card-img-top first-card-img img-fluid" alt="...">
+        <img class="card-img-top first-card-img" alt="...">
         <div class="card-body">
-            <h5 class="card-title first-card-summary text-center"></h5>
-            <p class="card-text first-card-extra text-center"></p>
+            <h5 class="card-title first-card-summary"></h5>
+            <p class="card-text first-card-extra"></p>
         </div>
-            <div class="card-footer text-center">
-                <small class="text-white ">Last updated 3 minutes ago</small>
+            <div class="card-footer">
+                <small>Last updated 3 minutes ago</small>
             </div>
     </div>
     <div class="card">
-        <div class="card-header insert-date"></div>
+        <div class="card-header insert-date-1"></div>
         <img class="card-img-top second-card-img " alt="...">
         <div class="card-body">
-            <h5 class="card-title second-card-summary text-center"></h5>
-            <p class="card-text second-card-extra text-center"></p>
+            <h5 class="card-title second-card-summary"></h5>
+            <p class="card-text second-card-extra"></p>
         </div>
-            <div class="card-footer text-center">
-                <small class="text-white ">Last updated 3 minutes ago</small>
+            <div class="card-footer">
+                <small >Last updated 3 minutes ago</small>
             </div>
     </div>
     <div class="card">
-        <div class="card-header insert-date"></div>
+        <div class="card-header insert-date-2"></div>
         <img class="card-img-top third-card-img " alt="...">
         <div class="card-body">
-            <h5 class="card-title third-card-summary text-center"></h5>
-            <p class="card-text third-card-extra text-center"></p>
+            <h5 class="card-title third-card-summary"></h5>
+            <p class="card-text third-card-extra"></p>
         </div>
-            <div class="card-footer text-center">
-                <small class="text-white">Last updated 3 minutes ago</small>
+            <div class="card-footer">
+                <small>Last updated 3 minutes ago</small>
             </div>
     </div>
 </div>
@@ -169,15 +168,46 @@
                 });
             });
 
+
         var weather = $.get("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + darkSky +
             "/" + lngLat.lat + "," + lngLat.lng);
         console.log(weather.done());
 
-        var dateObj = new Date((573080232 * 1000) + 86400000);
-        for (var i = 0; i < dateObj.length; i++){
-            $('.insert-date').append("Today's date: " + dateObj[i] + "");
+        //Date object creation
+        function date() {
+            var currentDate = new Date(),
+                day = currentDate.getDate(),
+                month = currentDate.getMonth() + 1,
+                year = currentDate.getFullYear(),
+                date = month + "/" + day + "/" + year;
+            console.log(date);
+            $('.insert-date').append(date);
         }
-        console.log(dateObj);
+        date();
+
+        function dateTwo() {
+            var currentDate = new Date((1573144620 *1000) + 86400000),
+                day = currentDate.getDate(),
+                month = currentDate.getMonth() + 1,
+                year = currentDate.getFullYear(),
+                date = month + "/" + day + "/" + year;
+            console.log(date);
+            $('.insert-date-1').append(date);
+        }
+        dateTwo();
+
+
+        function dateThree() {
+            var currentDate = new Date((1573144620 *1000) + (86400000 * 2)),
+                day = currentDate.getDate(),
+                month = currentDate.getMonth() + 1,
+                year = currentDate.getFullYear(),
+                date = month + "/" + day + "/" + year;
+            console.log(date);
+            $('.insert-date-2').append(date);
+        }
+        dateThree();
+
 
         var icons = [
             {
@@ -200,10 +230,10 @@
                 image: 'img/windy.webp'
             },{
                 summary: 'fog',
-                image: 'img/fog.webp'
+                image: 'img/fog1.webp'
             },{
                 summary: 'cloudy',
-                image: 'img/cloudy.webp'
+                image: 'img/cloudy1.webp'
             },{
                 summary: 'partly-cloudy-day',
                 image: 'img/partly-cloudy-day.webp'
@@ -265,6 +295,43 @@
     thirdWeatherCard(weather);
 
 
+    //Konami Code
+        var allowedKeys = {
+            37: 'ArrowLeft',
+            38: 'ArrowUp',
+            39: 'ArrowRight',
+            40: 'ArrowDown',
+            65: 'a',
+            66: 'b',
+            13: 'Enter'
+        };
+
+        var konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft',
+            'ArrowRight',
+            'b', 'a', 'Enter'];
+
+        var i = 0;
+
+        $('body').keydown(function (e) {
+            var key = allowedKeys[e.keyCode];
+            var requiredKey = konamiCode[i];
+
+            if (key == requiredKey){
+                i++;
+                if (i == konamiCode.length){
+                    rainingMen();
+                    i = 0;
+                }
+            }
+        });
+
+        function rainingMen() {
+            $('body').css('background-image', 'url(' + "img/raining-background.webp" + ')').css('background-repeat',
+                'repeat');
+
+            var audio = new Audio('img/raining-men.mp3');
+            audio.play();
+        }
 })
 </script>
 </body>
