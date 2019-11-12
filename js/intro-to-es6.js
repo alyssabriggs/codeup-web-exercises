@@ -70,10 +70,12 @@ const instructors = [
     'Fer',
 ];
 
-const [a,b] = instructors;
+const [a,b,c,d] = instructors;
 const europaInstructors = [a,b];
+const deimosInstructors = [c,d];
 
 console.log(europaInstructors);
+console.log(deimosInstructors);
 
 
 for (let instructor of instructors){
