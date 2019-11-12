@@ -1,27 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>jQuery</title>
+    <meta charset="utf8">
+    <style>
+        .highlight {
+            background-color: yellow;
+        }
+    </style>
 </head>
 <body>
+<p class="hello">Paragraph #1</p>
+<p>Paragraph #2</p>
+<p>Paragraph #3</p>
+<p class="hello">Paragraph #4</p>
+<p>Paragraph #5</p>
+<p>Paragraph #6</p>
+
+<script src="js/jquery-2.2.4.js"></script>
 <script>
+    // var $paragraphs = $('p');
+    // $paragraphs.end().html("Hello World");
 
-    function analyzeWord(word){
-        var obj = {};
-        var letterCount = word.length;
-        var matches = word.match(/[aeiou]/gi);
-        var vowelCount =  matches ? matches.length : 0;
-        obj = {
-            word: word,
-            numberOfLetters: letterCount,
-            numberOfVowels: vowelCount
-        };
-        return obj;
-    }
-
-    console.log(analyzeWord("excellent"));
-
+   var par = $('p').getElementsByClassName('hello');
+   $.each(par).addClass('highlight');
 </script>
 </body>
 </html>
