@@ -38,17 +38,26 @@ const users = [
     }
 ];
 
+
+// Use .filter to create an array of user objects where each user object has at least 3 languages in the languages array.
+
 const languages = users.filter(function (user) {
     return user.languages.length >= 3;
 });
 
 console.log(languages);
 
+
+// Use .map to create an array of strings where each element is a user's email address
+
 const emails = users.map(function (user) {
     return user.email;
 });
 
 console.log(emails);
+
+
+// Use .reduce to get the total years of experience from the list of users. Once you get the total of years you can use the result to calculate the average.
 
 const years = users.reduce((totalYears, user) => {
     return totalYears + user.yearsOfExperience;
@@ -60,19 +69,35 @@ const averageYears = years/users.length;
 
 console.log(averageYears);
 
-const longestEmail = emails.reduce((emailLength, user) => {
+
+// Use .reduce to get the longest email from the list of users.
+
+const longestEmail = emails.reduce((longest, email) => {
     // return emailLength.length > user.length ? emailLength.email : user.email
-    if (emailLength.length < user.length){
-        return user
+    if (email.length > longest.length){
+        return email
     } else {
-        return emailLength
+        return longest
     }
 }, "");
 
 console.log(longestEmail);
 
-const userNames = users.reduce((total, names) => {
-    return `${total} ${names.name}`;
-}, "");
+
+// Use .reduce to get the list of user's names in a single string. Example: Your instructors are: ryan, luis, zach, fernando, justin.
+
+const userNames = users.reduce((str, user) => {
+    return `${str}, ${user.name}`;
+}, "Your instructors are: david, vivian, sophie, trant") + ".";
 
 console.log(userNames);
+
+
+// Use .reduce to get the unique list of languages from the list of users.
+
+let listOfLanguages = Array.from(users.reduce((accumulator, user) => {
+    user.languages.map(language => accumulator.add(language));
+    return accumulator;
+}, new Set()));
+
+console.log(listOfLanguages);
