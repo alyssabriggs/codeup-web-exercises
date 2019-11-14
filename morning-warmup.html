@@ -407,6 +407,27 @@ var randoNum = Math.floor(Math.random() * 10) + 1;
         return n % 2 === 0;
     });
     console.log(evens);
+
+
+    //Write a function that returns a promise. THe promise should resolve if the function takes in an even number, and reject if passed anything else.
+
+    function promise(num){
+        return new Promise((resolve, reject) => {
+            if (num % 2 === 0){
+                resolve(`Why yes, the number ${num} is an even number.`)
+            } else {
+                reject(`${num} is definitely not an even number.`)
+            }
+        })
+    }
+
+    var randoNumber = Math.floor(Math.random() * 10) + 1;
+
+
+    promise(randoNumber)
+        .then(message => console.log(message))
+        .catch(message => console.log(message));
+
 </script>
 </body>
 </html>
