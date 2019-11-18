@@ -439,7 +439,15 @@ var randoNum = Math.floor(Math.random() * 10) + 1;
 
     headingPromise().then(message => {
         document.getElementsByTagName('body')[0].innerHTML += `<h1>${message}</h1>`;
-    })
+    });
+
+
+
+    //Write a function that returns Pi to 6 decimal places as a number
+  const piSix = () => parseFloat(Math.PI.toFixed(6));
+
+    console.log(piSix());
+    console.log(typeof piSix());
 
 </script>
 </body>
