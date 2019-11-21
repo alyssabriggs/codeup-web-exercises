@@ -10,20 +10,16 @@
     </style>
 </head>
 <body>
-<p class="hello">Paragraph #1</p>
-<p>Paragraph #2</p>
-<p>Paragraph #3</p>
-<p class="hello">Paragraph #4</p>
-<p>Paragraph #5</p>
-<p>Paragraph #6</p>
+
 
 <script src="js/jquery-2.2.4.js"></script>
 <script>
-    // var $paragraphs = $('p');
-    // $paragraphs.end().html("Hello World");
+    const p = new Promise((resolve, reject) => {
+        reject(3);
+    });
 
-   var par = $('p').getElementsByClassName('hello');
-   $.each(par).addClass('highlight');
+    p.then(result => console.log(result));
+    p.catch(error => console.log('An error occured!'));
 </script>
 </body>
 </html>
